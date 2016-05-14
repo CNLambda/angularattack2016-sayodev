@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
             .subscribe(
                 data => this.data1 = data
             );
-        console.log(this.data);
+        console.log(this.data1);
         location.href = "../#" + this.data1;
     }
 
