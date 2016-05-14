@@ -64,8 +64,8 @@ var CardCollectionComponent = (function () {
                     var id = -1;
                     var current_card = void 0;
                     for (var j = 0; j < 3; j++) {
-                        console.log("#collumn" + (j).toString());
-                        var current_height = document.getElementById("#collumn" + (j).toString()).offsetHeight;
+                        console.log("#collumn" + j.toString());
+                        var current_height = document.getElementById("#collumn" + j.toString()).offsetHeight;
                         if (current_height < minimum) {
                             minimum = current_height;
                             id = j;
