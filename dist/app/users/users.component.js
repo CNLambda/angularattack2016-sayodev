@@ -9,21 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var HomeComponent = (function () {
-    function HomeComponent() {
+var UsersComponent = (function () {
+    function UsersComponent() {
     }
-    HomeComponent.prototype.ngOnInit = function () {
+    UsersComponent.prototype.ngOnInit = function () {
     };
-    HomeComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], UsersComponent.prototype, "opened", void 0);
+    UsersComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'home',
-            templateUrl: 'home.component.html',
-            styleUrls: ['home.component.css']
+            selector: 'users',
+            templateUrl: 'users.component.html',
+            styleUrls: ['users.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], HomeComponent);
-    return HomeComponent;
+    ], UsersComponent);
+    return UsersComponent;
 }());
-exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.component.js.map
+exports.UsersComponent = UsersComponent;
+//# sourceMappingURL=users.component.js.map

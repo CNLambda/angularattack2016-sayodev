@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -10,7 +10,7 @@ export class CardComponent implements OnInit {
 
     @Input() card_data: string;
     @Input() id: number;
-    @Output() on_delete: EventEmitter = new EventEmitter();
+    @Output() on_delete: EventEmitter<void> = new EventEmitter<void>();
     public title: string;
     public type: string;
     public color: string;
@@ -26,7 +26,7 @@ export class CardComponent implements OnInit {
     }
 
     ngOnInit() {
-        var data = JSON.parse(card_data);
+        var data = JSON.parse(this.card_data);
         this.title = data.title;
         this.type = data.type;
         this.content = data.content;

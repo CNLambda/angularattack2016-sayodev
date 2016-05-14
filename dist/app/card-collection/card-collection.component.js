@@ -9,21 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var HomeComponent = (function () {
-    function HomeComponent() {
+var CardCollectionComponent = (function () {
+    function CardCollectionComponent() {
+        this.cards = [];
     }
-    HomeComponent.prototype.ngOnInit = function () {
+    CardCollectionComponent.prototype.ngOnInit = function () {
     };
-    HomeComponent = __decorate([
+    CardCollectionComponent.prototype.delete = function (index) {
+        this.cards.splice(index, 1);
+    };
+    CardCollectionComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'home',
-            templateUrl: 'home.component.html',
-            styleUrls: ['home.component.css']
+            selector: 'card-collection',
+            templateUrl: 'card-collection.component.html',
+            styleUrls: ['card-collection.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], HomeComponent);
-    return HomeComponent;
+    ], CardCollectionComponent);
+    return CardCollectionComponent;
 }());
-exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.component.js.map
+exports.CardCollectionComponent = CardCollectionComponent;
+//# sourceMappingURL=card-collection.component.js.map

@@ -18,7 +18,7 @@ export class CardCollectionComponent implements OnInit {
     }
 
     delete(index: number) {
-        this.cards.delete(index);
+        this.cards.splice(index, 1);
     }
 
 }

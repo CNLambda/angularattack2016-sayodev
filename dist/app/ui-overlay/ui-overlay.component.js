@@ -17,7 +17,7 @@ var UiOverlayComponent = (function () {
     UiOverlayComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'app-ui-overlay',
+            selector: 'ui-overlay',
             templateUrl: 'ui-overlay.component.html',
             styleUrls: ['ui-overlay.component.css']
         }), 
