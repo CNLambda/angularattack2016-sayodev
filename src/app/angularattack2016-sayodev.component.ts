@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeComponent } from './+home';
 import { BoardComponent } from './board';
+import { SessionService } from './session.service';
 import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 
 @Component({
@@ -19,7 +20,7 @@ export class Angularattack2016SayodevAppComponent implements OnInit {
 
     title = "BrainShare";
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private session: SessionService) {}
 
     ngOnInit() {
         if(window.location.href.indexOf("#") > -1) {

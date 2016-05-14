@@ -11,7 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var SessionService = (function () {
     function SessionService() {
+        this.storage_id = "aa_sayodev_storage";
+        if (this.getRawObject() == null) {
+            this.setRawObject({});
+        }
     }
+    SessionService.prototype.getRawObject = function () {
+        return localStorage.getItem(this.storage_id);
+    };
+    SessionService.prototype.setRawObject = function (data) {
+        localStorage.setItem(this.storage_id, data);
+    };
     SessionService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

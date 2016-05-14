@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var _home_1 = require('./+home');
 var board_1 = require('./board');
+var session_service_1 = require('./session.service');
 var router_1 = require('@angular/router');
 var Angularattack2016SayodevAppComponent = (function () {
-    function Angularattack2016SayodevAppComponent(router) {
+    function Angularattack2016SayodevAppComponent(router, session) {
         this.router = router;
+        this.session = session;
         this.title = "BrainShare";
     }
     Angularattack2016SayodevAppComponent.prototype.ngOnInit = function () {
@@ -38,7 +40,7 @@ var Angularattack2016SayodevAppComponent = (function () {
             { path: '/home', component: _home_1.HomeComponent },
             { path: '/board', component: board_1.BoardComponent }
         ]), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, session_service_1.SessionService])
     ], Angularattack2016SayodevAppComponent);
     return Angularattack2016SayodevAppComponent;
 }());
