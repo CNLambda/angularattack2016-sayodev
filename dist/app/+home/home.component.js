@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var http_2 = require('@angular/http');
 var FormModel = (function () {
     function FormModel() {
         this.nickname = '';
@@ -37,9 +38,10 @@ var HomeComponent = (function () {
             moduleId: module.id,
             selector: 'home',
             templateUrl: 'home.component.html',
-            styleUrls: ['home.component.css']
+            styleUrls: ['home.component.css'],
+            providers: [http_1.HTTP_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_2.Http])
     ], HomeComponent);
     return HomeComponent;
 }());

@@ -14,7 +14,8 @@ export class FormModel {
   moduleId: module.id,
   selector: 'home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css']
+  styleUrls: ['home.component.css'],
+  providers:  [ HTTP_PROVIDERS ]
 })
 export class HomeComponent implements OnInit {
 
