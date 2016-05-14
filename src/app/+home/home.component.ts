@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
 
     private url = 'https://angularattack2016-sayodev.herokuapp.com/board/create';
-    private data;
+    private data1;
 
     ngOnInit() {
         this.model = new FormModel();
@@ -34,10 +34,10 @@ export class HomeComponent implements OnInit {
     new_board() {
         this.http.post(this.url, "{}")
             .subscribe(
-                data => this.data = data
+                data => this.data1 = data
             );
         console.log(this.data);
-        location.href = "../#" + this.data
+        location.href = "../#" + this.data1;
     }
 
 }
