@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Http, Response} from '@angular/http';
 
 export class FormModel {
     public nickname: string
@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
     }
 
     new_board() {
+        
         location.href = "../#new_id";
     }
 
