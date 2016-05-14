@@ -18,7 +18,9 @@ var Angularattack2016SayodevAppComponent = (function () {
         this.title = "BrainShare";
     }
     Angularattack2016SayodevAppComponent.prototype.ngOnInit = function () {
-        this.router.navigate(['/home']);
+        if (!window.location.href.endsWith("board")) {
+            this.router.navigate(['/home']);
+        }
     };
     Angularattack2016SayodevAppComponent = __decorate([
         core_1.Component({
