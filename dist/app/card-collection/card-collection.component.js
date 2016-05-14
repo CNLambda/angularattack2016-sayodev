@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var card_1 = require('../card');
 var CardCollectionComponent = (function () {
-    function CardCollectionComponent() {
+    function CardCollectionComponent(myElement) {
         this.cards = [
             { "title": "Yay!", "type": "image", "content": "..." },
             { "title": "Whoooo!", "type": "text", "content": "..." },
@@ -22,7 +22,8 @@ var CardCollectionComponent = (function () {
             { "title": "We like jQuery.", "type": "text", "content": "..." },
             { "title": "I like trains.", "type": "text", "content": "..." }
         ];
-        this.collumns = 3;
+        this.collumns = 1;
+        this.element = myElement;
     }
     CardCollectionComponent.prototype.ngOnInit = function () {
         var this_component = this;
@@ -52,22 +53,34 @@ var CardCollectionComponent = (function () {
     CardCollectionComponent.prototype.reorderCards = function () {
         var _this = this;
         var collumn_data = [];
-        if (window.matchMedia("(min-width: 3in)").matches) {
+        if (window.matchMedia("(min-width: 4in)").matches) {
             this.collumns = 3;
             this.card_table = [];
             for (var i = 0; i < this.collumns; i++) {
                 this.card_table.push([]);
             }
+            for (var i = 0; i < this.cards.length; i++) {
+                var current_card = this.cards[i];
+                this.card_table[0].push({
+                    "title": current_card.title,
+                    "type": current_card.type,
+                    "content": current_card.content,
+                    "id": i
+                });
+            }
             window.setTimeout(function () {
+                var collumn_data = [];
+                for (var i = 0; i < _this.cards.length; i++) {
+                    collumn_data.push(0);
+                }
+                _this.card_table[0] = [];
                 for (var i = 0; i < _this.cards.length; i++) {
                     var minimum = Infinity;
                     var id = -1;
                     var current_card = void 0;
                     for (var j = 0; j < 3; j++) {
-                        console.log("#collumn" + j.toString());
-                        var current_height = document.getElementById("#collumn" + j.toString()).offsetHeight;
-                        if (current_height < minimum) {
-                            minimum = current_height;
+                        if (collumn_data[j] < minimum) {
+                            minimum = collumn_data[j];
                             id = j;
                         }
                     }
@@ -78,6 +91,7 @@ var CardCollectionComponent = (function () {
                         "content": current_card.content,
                         "id": i
                     });
+                    collumn_data[id] += _this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
                 }
             }, 100);
         }
@@ -97,7 +111,7 @@ var CardCollectionComponent = (function () {
             styleUrls: ['card-collection.component.css'],
             directives: [card_1.CardComponent]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [core_1.ElementRef])
     ], CardCollectionComponent);
     return CardCollectionComponent;
 }());
