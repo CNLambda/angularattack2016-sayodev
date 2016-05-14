@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'app-card',
+    selector: 'card',
     templateUrl: 'card.component.html',
     styleUrls: ['card.component.css', '../../css/materialize.min.css']
 })
