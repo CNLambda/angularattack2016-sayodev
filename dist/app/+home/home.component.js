@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
 var FormModel = (function () {
     function FormModel() {
         this.nickname = '';
@@ -17,13 +18,15 @@ var FormModel = (function () {
 }());
 exports.FormModel = FormModel;
 var HomeComponent = (function () {
-    function HomeComponent() {
+    function HomeComponent(http) {
+        this.http = http;
         this.url = 'https://angularattack2016-sayodev.herokuapp.com/board/create';
     }
     HomeComponent.prototype.ngOnInit = function () {
         this.model = new FormModel();
     };
     HomeComponent.prototype.new_board = function () {
+        this.http.get(this.url);
         location.href = "../#new_id";
     };
     HomeComponent = __decorate([
@@ -33,7 +36,7 @@ var HomeComponent = (function () {
             templateUrl: 'home.component.html',
             styleUrls: ['home.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], HomeComponent);
     return HomeComponent;
 }());

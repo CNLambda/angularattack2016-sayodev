@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
     model: FormModel;
 
-    constructor () {}
+    constructor (private http: Http) {}
 
 
     private url = 'https://angularattack2016-sayodev.herokuapp.com/board/create';
@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
     }
 
     new_board() {
+        this.http.get(this.url);
         location.href = "../#new_id";
     }
 
