@@ -33,6 +33,7 @@ const barrels: string[] = [
   'app/ui-overlay',
   'app/chat',
   'app/card',
+  'app/users',
   /** @cli-barrel */
 ];
 
