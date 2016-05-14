@@ -27,7 +27,26 @@ export class HomeComponent implements OnInit {
     }
 
     new_board() {
-        this.http.post(this.url);
+
+
+this.http.post(this.url)
+
+         .toPromise()
+
+         .then(res => {
+            if(res.ok){
+                console.log(res.text());
+            }
+
+          })
+
+         .catch(err => {
+
+            // Do some Fehlerbehandlung.
+
+          });
+
+
         location.href = "../#new_id";
     }
 
