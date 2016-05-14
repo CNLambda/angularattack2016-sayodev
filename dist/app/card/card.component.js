@@ -19,10 +19,9 @@ var CardComponent = (function () {
         this.content = null;
     }
     CardComponent.prototype.ngOnInit = function () {
-        var data = JSON.parse(this.data);
-        this.title = data.title;
-        this.type = data.type;
-        this.content = data.content;
+        this.title = this.data.title;
+        this.type = this.data.type;
+        this.content = this.data.content;
     };
     CardComponent.prototype.changeColor = function (new_color) {
         this.color = new_color;
@@ -35,7 +34,7 @@ var CardComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', String)
+        __metadata('design:type', Object)
     ], CardComponent.prototype, "data", void 0);
     __decorate([
         core_1.Input(), 
