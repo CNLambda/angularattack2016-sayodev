@@ -17,14 +17,14 @@ export class CardCollectionComponent implements OnInit {
 
     constructor(myElement: ElementRef) {
         this.cards = [
-            {"title": "Yay!","type": "text","content": "Text Nr. 1"},
-            {"title": "Whoooo!","type": "text","content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-            {"title": "I don't like Angular2","type": "link","content": "http://www.google.de"},
-            {"title": "I don't like Angular","type": "text","content": "..."},
-            {"title": "Shit happens.","type": "text","content": "..."},
-            {"title": "Angular happens.","type": "text","content": "..."},
-            {"title": "We like jQuery.","type": "text","content": "..."},
-            {"title": "I like trains.","type": "text","content": "..."}
+            {"title": "Text!","type": "text","content": "Card Nr. 1"},
+            {"title": "Lorem Ipsum Text!","type": "text","content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
+            {"title": "This is Google.","type": "link","content": "http://www.google.de"},
+            {"title": "This isn´t Google.","type": "text","content": "..."},
+            {"title": "Want some more cards?","type": "text","content": "..."},
+            {"title": "It will happen at some point.","type": "text","content": "..."},
+            {"title": "Look at those colors!","type": "text","content": "..."},
+            {"title": "BrainShare","type": "text","content": "was made by 3 german students at the age of ~16, who happen to <b>really</b> like coding."}
         ];
         this.collumns = 1;
         this.element = myElement;
@@ -105,8 +105,8 @@ export class CardCollectionComponent implements OnInit {
     }
 
     delete(index: number) {
-        this.reorderCards();
         this.cards.splice(index, 1);
+        this.reorderCards();
     }
 
 }

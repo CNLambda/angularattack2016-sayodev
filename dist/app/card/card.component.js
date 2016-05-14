@@ -9,6 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var text_card_1 = require('../text-card');
+var link_card_1 = require('../link-card');
 var CardComponent = (function () {
     function CardComponent() {
         this.on_delete = new core_1.EventEmitter();
@@ -49,7 +51,8 @@ var CardComponent = (function () {
             moduleId: module.id,
             selector: 'card',
             templateUrl: 'card.component.html',
-            styleUrls: ['card.component.css', '../../css/materialize.min.css']
+            styleUrls: ['card.component.css', '../../css/materialize.min.css'],
+            directives: [text_card_1.TextCardComponent, link_card_1.LinkCardComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], CardComponent);

@@ -13,14 +13,14 @@ var card_1 = require('../card');
 var CardCollectionComponent = (function () {
     function CardCollectionComponent(myElement) {
         this.cards = [
-            { "title": "Yay!", "type": "text", "content": "Text Nr. 1" },
-            { "title": "Whoooo!", "type": "text", "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
-            { "title": "I don't like Angular2", "type": "text", "content": "..." },
-            { "title": "I don't like Angular", "type": "text", "content": "..." },
-            { "title": "Shit happens.", "type": "text", "content": "..." },
-            { "title": "Angular happens.", "type": "text", "content": "..." },
-            { "title": "We like jQuery.", "type": "text", "content": "..." },
-            { "title": "I like trains.", "type": "text", "content": "..." }
+            { "title": "Text!", "type": "text", "content": "Card Nr. 1" },
+            { "title": "Lorem Ipsum Text!", "type": "text", "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
+            { "title": "This is Google.", "type": "link", "content": "http://www.google.de" },
+            { "title": "This isn´t Google.", "type": "text", "content": "..." },
+            { "title": "Want some more cards?", "type": "text", "content": "..." },
+            { "title": "It will happen at some point.", "type": "text", "content": "..." },
+            { "title": "Look at those colors!", "type": "text", "content": "..." },
+            { "title": "BrainShare", "type": "text", "content": "was made by 3 german students at the age of ~16, who happen to <b>really</b> like coding." }
         ];
         this.collumns = 1;
         this.element = myElement;
@@ -30,17 +30,15 @@ var CardCollectionComponent = (function () {
         var rtime;
         var timeout = false;
         var delta = 300;
-        document.addEventListener("resize", function () {
-            var date = new Date();
-            rtime = date.now();
+        window.addEventListener("resize", function () {
+            rtime = (new Date()).valueOf();
             if (timeout === false) {
                 timeout = true;
                 setTimeout(resizeend, delta);
             }
         });
         function resizeend() {
-            var date = new Date();
-            if (date.now() - rtime < delta) {
+            if ((new Date()).valueOf() - rtime < delta) {
                 setTimeout(resizeend, delta);
             }
             else {
@@ -53,7 +51,7 @@ var CardCollectionComponent = (function () {
     CardCollectionComponent.prototype.reorderCards = function () {
         var _this = this;
         var collumn_data = [];
-        if (window.matchMedia("(min-width: 4in)").matches) {
+        if (window.matchMedia("(min-width: 8in)").matches) {
             this.collumns = 3;
             this.card_table = [];
             for (var i = 0; i < this.collumns; i++) {
@@ -91,7 +89,7 @@ var CardCollectionComponent = (function () {
                         "content": current_card.content,
                         "id": i
                     });
-                    collumn_data[id] += _this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
+                    collumn_data[id] += 12 + _this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
                 }
             }, 100);
         }
@@ -100,8 +98,8 @@ var CardCollectionComponent = (function () {
         }
     };
     CardCollectionComponent.prototype.delete = function (index) {
-        this.reorderCards();
         this.cards.splice(index, 1);
+        this.reorderCards();
     };
     CardCollectionComponent = __decorate([
         core_1.Component({
