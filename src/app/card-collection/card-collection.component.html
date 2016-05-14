@@ -1,8 +1,10 @@
-<div *ngIf="collumns == 1">
-    <card *ngFor="let card_data of cards; let i = index;" [attr.data]="card_data" [id]="i" (on_delete)="delete(i)"></card>
+<div *ngIf="collumns == 1" class="row">
+    <div class="collumn span 12">
+        <card *ngFor="let card_data of cards; let i = index;" [data]="card_data" [id]="i" (on_delete)="delete(i)"></card>
+    </div>
 </div>
 <div *ngIf="collumns != 1" class="row">
-    <div *ngFor="let cards_in_collumn of card_table; let i = index" id="{{'collumn' + i.toString()}}">
-        <card *ngFor="let card_data of cards_in_collumn" [attr.data]="card_data" [id]="card_data.id" (on_delete)="delete(card_data.id)"></card>
+    <div *ngFor="let cards_in_collumn of card_table; let i = index" class="collumn {{'s' + (12/collumns).toString().split('.')[-1]}}">
+        <card *ngFor="let card_data of cards_in_collumn; let j = index" [data]="card_data" [id]="card_data.id" (on_delete)="delete(card_data.id)" class="{{'app_card' + card_data.id.toString()}}"></card>
     </div>
 </div>

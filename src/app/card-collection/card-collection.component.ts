@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { CardComponent } from '../card';
 
 @Component({
@@ -13,8 +13,9 @@ export class CardCollectionComponent implements OnInit {
     public cards: {"title": string, "type": string, "content": any}[];
     public card_table: {"title": string, "type": string, "content": any, "id": number}[][];
     public collumns: number;
+    public element: ElementRef;
 
-    constructor() {
+    constructor(myElement: ElementRef) {
         this.cards = [
             {"title": "Yay!","type": "image","content": "..."},
             {"title": "Whoooo!","type": "text","content": "..."},
@@ -25,7 +26,8 @@ export class CardCollectionComponent implements OnInit {
             {"title": "We like jQuery.","type": "text","content": "..."},
             {"title": "I like trains.","type": "text","content": "..."}
         ];
-        this.collumns = 3;
+        this.collumns = 1;
+        this.element = myElement;
     }
 
     ngOnInit() {
@@ -58,22 +60,34 @@ export class CardCollectionComponent implements OnInit {
 
     reorderCards() {
         let collumn_data: number[] = [];
-        if(window.matchMedia("(min-width: 3in)").matches) {
+        if(window.matchMedia("(min-width: 4in)").matches) {
             this.collumns = 3;
             this.card_table = [];
             for (let i: number = 0; i < this.collumns; i++) {
                 this.card_table.push([]);
             }
+            for (let i: number = 0; i < this.cards.length; i++) {
+                let current_card: {"title": string, "type": string, "content": any} = this.cards[i];
+                this.card_table[0].push({
+                    "title": current_card.title,
+                    "type": current_card.type,
+                    "content": current_card.content,
+                    "id": i
+                });
+            }
             window.setTimeout(() => {
+                let collumn_data: number[] = [];
+                for (let i: number = 0; i < this.cards.length; i++) {
+                  collumn_data.push(0);
+                }
+                this.card_table[0] = [];
                 for (let i: number = 0; i < this.cards.length; i++) {
                     let minimum: number = Infinity;
                     let id: number = -1;
                     let current_card: {"title": string, "type": string, "content": any};
                     for (let j: number = 0; j < 3; j++) {
-                        console.log("#collumn" + j.toString());
-                        var current_height = document.getElementById("#collumn" + j.toString()).offsetHeight;
-                        if (current_height < minimum) {
-                            minimum = current_height;
+                        if (collumn_data[j] < minimum) {
+                            minimum = collumn_data[j];
                             id = j;
                         }
                     }
@@ -84,6 +98,7 @@ export class CardCollectionComponent implements OnInit {
                         "content": current_card.content,
                         "id": i
                     });
+                    collumn_data[id] += this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
                 }
             }, 100);
         } else {
