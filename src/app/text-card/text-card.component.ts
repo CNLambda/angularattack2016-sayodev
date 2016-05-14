@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-text-card',
+  selector: 'text-card',
   templateUrl: 'text-card.component.html',
   styleUrls: ['text-card.component.css']
 })
