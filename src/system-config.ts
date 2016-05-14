@@ -34,6 +34,7 @@ const barrels: string[] = [
   'app/chat',
   'app/card',
   'app/users',
+  'app/+home',
   /** @cli-barrel */
 ];
 
