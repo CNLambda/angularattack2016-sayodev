@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HomeComponent } from './+home';
-import { Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
+import { Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteConfig} from '@angular/router';
 import { CardCollectionComponent } from './card-collection';
 import { UiOverlayComponent } from './ui-overlay';
 import { ChatComponent } from './chat';
