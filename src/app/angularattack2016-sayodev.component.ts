@@ -25,7 +25,6 @@ export class Angularattack2016SayodevAppComponent implements OnInit {
         if(!window.location.href.endsWith("board")) {
           this.router.navigate(['/home']);
         }
-        
     }
 
 }
