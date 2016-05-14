@@ -14,10 +14,18 @@ var TextCardComponent = (function () {
     }
     TextCardComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], TextCardComponent.prototype, "text", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], TextCardComponent.prototype, "editing", void 0);
     TextCardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'app-text-card',
+            selector: 'text-card',
             templateUrl: 'text-card.component.html',
             styleUrls: ['text-card.component.css']
         }), 
