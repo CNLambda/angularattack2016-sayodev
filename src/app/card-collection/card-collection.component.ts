@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardCollectionComponent implements OnInit {
 
-  constructor() {}
+    constructor() {
+        this.cards = [];
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

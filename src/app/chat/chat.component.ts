@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-  constructor() {}
+    @Input() opened;
 
-  ngOnInit() {
-  }
+    constructor() {}
+
+    ngOnInit() {
+    }
 
 }
