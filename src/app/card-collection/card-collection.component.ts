@@ -19,7 +19,7 @@ export class CardCollectionComponent implements OnInit {
         this.cards = [
             {"title": "Yay!","type": "text","content": "Text Nr. 1"},
             {"title": "Whoooo!","type": "text","content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-            {"title": "I don't like Angular2","type": "text","content": "..."},
+            {"title": "I don't like Angular2","type": "link","content": "http://www.google.de"},
             {"title": "I don't like Angular","type": "text","content": "..."},
             {"title": "Shit happens.","type": "text","content": "..."},
             {"title": "Angular happens.","type": "text","content": "..."},
@@ -36,9 +36,8 @@ export class CardCollectionComponent implements OnInit {
         let timeout: boolean = false;
         let delta: number = 300;
 
-        document.addEventListener("resize", function() {
-            let date: any = new Date();
-            rtime = date.now();
+        window.addEventListener("resize", function() {
+            rtime = (new Date()).valueOf();
             if (timeout === false) {
                 timeout = true;
                 setTimeout(resizeend, delta);
@@ -46,8 +45,7 @@ export class CardCollectionComponent implements OnInit {
         });
 
         function resizeend() {
-            let date: any = new Date();
-            if (date.now() - rtime < delta) {
+            if ((new Date()).valueOf() - rtime < delta) {
                 setTimeout(resizeend, delta);
             } else {
                 timeout = false;
@@ -60,7 +58,7 @@ export class CardCollectionComponent implements OnInit {
 
     reorderCards() {
         let collumn_data: number[] = [];
-        if(window.matchMedia("(min-width: 4in)").matches) {
+        if(window.matchMedia("(min-width: 8in)").matches) {
             this.collumns = 3;
             this.card_table = [];
             for (let i: number = 0; i < this.collumns; i++) {
@@ -98,7 +96,7 @@ export class CardCollectionComponent implements OnInit {
                         "content": current_card.content,
                         "id": i
                     });
-                    collumn_data[id] += this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
+                    collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
                 }
             }, 100);
         } else {
