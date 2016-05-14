@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var text_card_1 = require('../text-card');
 var link_card_1 = require('../link-card');
+var image_card_1 = require('../image-card');
 var CardComponent = (function () {
     function CardComponent() {
         this.on_delete = new core_1.EventEmitter();
@@ -53,7 +54,7 @@ var CardComponent = (function () {
             selector: 'card',
             templateUrl: 'card.component.html',
             styleUrls: ['card.component.css'],
-            directives: [text_card_1.TextCardComponent, link_card_1.LinkCardComponent]
+            directives: [text_card_1.TextCardComponent, link_card_1.LinkCardComponent, image_card_1.ImageCardComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], CardComponent);

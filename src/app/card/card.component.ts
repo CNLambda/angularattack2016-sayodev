@@ -1,13 +1,14 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { TextCardComponent } from '../text-card';
 import { LinkCardComponent } from '../link-card';
+import { ImageCardComponent } from '../image-card';
 
 @Component({
     moduleId: module.id,
     selector: 'card',
     templateUrl: 'card.component.html',
     styleUrls: ['card.component.css'],
-    directives: [TextCardComponent, LinkCardComponent]
+    directives: [TextCardComponent, LinkCardComponent, ImageCardComponent]
 })
 export class CardComponent implements OnInit {
 
