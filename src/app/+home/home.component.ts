@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Http, Response} from '@angular/http';
+import { Http, Response } from '@angular/http';
 
 export class FormModel {
     public nickname: string
