@@ -6,7 +6,7 @@ import { LinkCardComponent } from '../link-card';
     moduleId: module.id,
     selector: 'card',
     templateUrl: 'card.component.html',
-    styleUrls: ['card.component.css', '../../css/materialize.min.css'],
+    styleUrls: ['card.component.css'],
     directives: [TextCardComponent, LinkCardComponent]
 })
 export class CardComponent implements OnInit {

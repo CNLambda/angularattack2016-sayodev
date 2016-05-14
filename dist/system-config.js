@@ -31,6 +31,7 @@ var barrels = [
     'app/+home',
     'app/board',
     'app/text-card',
+    'app/link-card',
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {

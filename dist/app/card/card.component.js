@@ -51,7 +51,7 @@ var CardComponent = (function () {
             moduleId: module.id,
             selector: 'card',
             templateUrl: 'card.component.html',
-            styleUrls: ['card.component.css', '../../css/materialize.min.css'],
+            styleUrls: ['card.component.css'],
             directives: [text_card_1.TextCardComponent, link_card_1.LinkCardComponent]
         }), 
         __metadata('design:paramtypes', [])

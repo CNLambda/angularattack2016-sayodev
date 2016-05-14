@@ -8,12 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TextCardComponent implements OnInit {
 
-  @Input() text: string;
-  @Input() editing: boolean;
+    @Input() text: string;
+    @Input() editing: boolean;
 
-  constructor() {}
+    constructor() {}
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

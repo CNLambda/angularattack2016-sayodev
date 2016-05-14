@@ -37,6 +37,7 @@ const barrels: string[] = [
   'app/+home',
   'app/board',
   'app/text-card',
+  'app/link-card',
   /** @cli-barrel */
 ];
 
