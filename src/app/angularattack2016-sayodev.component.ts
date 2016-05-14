@@ -10,7 +10,7 @@ import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/ro
   templateUrl: 'angularattack2016-sayodev.component.html',
   styleUrls: ['angularattack2016-sayodev.component.css'],
   directives: [ROUTER_DIRECTIVES],
-  providers: [ROUTER_PROVIDERS]
+  providers: [ROUTER_PROVIDERS, SessionService]
 })
 @Routes([
     {path: '/home', component: HomeComponent},
@@ -20,7 +20,9 @@ export class Angularattack2016SayodevAppComponent implements OnInit {
 
     title = "BrainShare";
 
-    constructor(private router: Router, private session: SessionService) {}
+    constructor(private router: Router, private session: SessionService) {
+      this.session.setBoardUsername("abc", "jonas");
+    }
 
     ngOnInit() {
         if(window.location.href.indexOf("#") > -1) {

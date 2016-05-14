@@ -17,10 +17,32 @@ var SessionService = (function () {
         }
     }
     SessionService.prototype.getRawObject = function () {
-        return localStorage.getItem(this.storage_id);
+        return JSON.parse(localStorage.getItem(this.storage_id));
     };
     SessionService.prototype.setRawObject = function (data) {
-        localStorage.setItem(this.storage_id, data);
+        localStorage.setItem(this.storage_id, JSON.stringify(data));
+    };
+    SessionService.prototype.getValue = function (key) {
+        return this.getRawObject()[key];
+    };
+    SessionService.prototype.setValue = function (key, val) {
+        var obj = this.getRawObject();
+        obj[key] = val;
+        this.setRawObject(obj);
+    };
+    SessionService.prototype.getBoardUsername = function (boardId) {
+        if (this.getValue(boardId) == null) {
+            return null;
+        }
+        return this.getValue(boardId).username;
+    };
+    SessionService.prototype.setBoardUsername = function (boardId, username) {
+        if (this.getValue(boardId) == null) {
+            this.setValue(boardId, {});
+        }
+        var obj = this.getValue(boardId);
+        obj["username"] = username;
+        this.setValue(boardId, obj);
     };
     SessionService = __decorate([
         core_1.Injectable(), 

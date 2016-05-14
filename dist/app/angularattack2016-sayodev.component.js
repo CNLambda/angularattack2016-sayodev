@@ -18,6 +18,7 @@ var Angularattack2016SayodevAppComponent = (function () {
         this.router = router;
         this.session = session;
         this.title = "BrainShare";
+        this.session.setBoardUsername("abc", "jonas");
     }
     Angularattack2016SayodevAppComponent.prototype.ngOnInit = function () {
         if (window.location.href.indexOf("#") > -1) {
@@ -34,7 +35,7 @@ var Angularattack2016SayodevAppComponent = (function () {
             templateUrl: 'angularattack2016-sayodev.component.html',
             styleUrls: ['angularattack2016-sayodev.component.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [router_1.ROUTER_PROVIDERS]
+            providers: [router_1.ROUTER_PROVIDERS, session_service_1.SessionService]
         }),
         router_1.Routes([
             { path: '/home', component: _home_1.HomeComponent },
