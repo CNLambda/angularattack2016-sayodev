@@ -6,6 +6,7 @@ import { UiOverlayComponent } from './ui-overlay';
 import { ChatComponent } from './chat';
 import { UsersComponent } from './users';
 
+
 @Component({
   moduleId: module.id,
   selector: 'angularattack2016-sayodev-app',
