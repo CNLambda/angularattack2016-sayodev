@@ -22,7 +22,7 @@ export class Angularattack2016SayodevAppComponent implements OnInit {
     constructor(private router: Router) {}
 
     ngOnInit() {
-        if(window.location.href.contains("#")) {
+        if(window.location.href.indexOf("#") > -1) {
             this.router.navigate(['/board']);
         } else {
             this.router.navigate(['/home']);
