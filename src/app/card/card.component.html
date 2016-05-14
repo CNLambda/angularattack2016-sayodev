@@ -1,5 +1,5 @@
-<div class="card">
-    <div class="card-title">{{title}}</div>
+<div class="card {{color}}">
+    <div *ngIf="title != ''" class="card-title">{{title}}</div>
     <div class="content">
         <!--<text-card *ngIf="type == 'text'" [card_data]="{{card_data}}"></text-card>
         <link-card *ngIf="type == 'link'" [card_data]="{{card_data}}"></link-card>
@@ -7,7 +7,7 @@
         <canvas-card *ngIf="type == 'canvas'" [card_data]="{{card_data}}"></canvas-card>
         <file-card *ngIf="type == 'file'" [card_data]="{{card_data}}"></file-card>-->
     </div>
-    <div class="card-controls">
+    <div class="card-action">
         <a class="btn-floating waves-effect waves-light blue">
             <i class="material-icons">edit</i>
         </a>
@@ -20,11 +20,11 @@
             </a>
             <ul>
                 <li>
-                    <a class="btn-floating white"></a>
-                    <a class="btn-floating red"></a>
-                    <a class="btn-floating blue"></a>
-                    <a class="btn-floating green"></a>
-                    <a class="btn-floating yellow"></a>
+                    <a class="btn-floating white darken-1" (onclick)="changeColor('white')"></a>
+                    <a class="btn-floating red darken-1" (onclick)="changeColor('red')"></a>
+                    <a class="btn-floating blue darken-1" (onclick)="changeColor('blue')"></a>
+                    <a class="btn-floating green darken-1" (onclick)="changeColor('green')"></a>
+                    <a class="btn-floating yellow darken-1" (onclick)="changeColor('yellow')"></a>
                 </li>
             </ul>
         </div>

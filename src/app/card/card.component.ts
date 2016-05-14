@@ -13,12 +13,17 @@ export class CardComponent implements OnInit {
     constructor() {
         this.title = '';
         this.type = '';
+        this.color = 'white';
     }
 
     ngOnInit() {
         var data = JSON.parse(card_data);
         this.title = data.title;
         this.type = data.type;
+    }
+
+    changeColor(new_color) {
+        this.color = new_color;
     }
 
 }
