@@ -18,16 +18,16 @@ export class FormModel {
 })
 export class HomeComponent implements OnInit {
 
-  model: FormModel;
+    model: FormModel;
 
-  constructor() {}
+    constructor() {}
 
-  ngOnInit() {
-      this.model = new FormModel();
-  }
+    ngOnInit() {
+        this.model = new FormModel();
+    }
 
-  new_board() {
-      location.href = "../board";
-  }
+    new_board() {
+        location.href = "../#new_id";
+    }
 
 }

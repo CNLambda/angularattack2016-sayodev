@@ -22,8 +22,10 @@ export class Angularattack2016SayodevAppComponent implements OnInit {
     constructor(private router: Router) {}
 
     ngOnInit() {
-        if(!window.location.href.endsWith("board")) {
-          this.router.navigate(['/home']);
+        if(window.location.href.contains("#")) {
+            this.router.navigate(['/board']);
+        } else {
+            this.router.navigate(['/home']);
         }
     }
 
