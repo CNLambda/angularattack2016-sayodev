@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["index.ts"],"names":[],"mappings":";AAAA,4BAA0B,eAAe,CAAC;AAAlC,gDAAkC;AAC1C,oDAAmD,uCAAuC,CAAC;AAAnF,0HAAmF","sourcesContent":["export {environment} from './environment';\nexport {Angularattack2016SayodevAppComponent} from './angularattack2016-sayodev.component';\n"]}

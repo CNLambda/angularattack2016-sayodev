@@ -1,0 +1,38 @@
+#content{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index: 10000;
+}
+#createboard{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:30em;
+    height:12em;
+    align:center;
+    margin-left: -15em;
+    margin-top: -10em;
+}
+#logo{
+    font-family: 'Aldrich', sans-serif;
+    font-size: 40pt;
+    text-align:center;
+}
+#bckgrnd{
+    background-color: #EEE; /*later an backgroud image */
+    background-size: auto 100%;
+    position:fixed;
+    z-index:1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*filter: blur(3px); brightness(50%);*/
+    z-index: 1001;
+}
+#button {
+    width:100%;
+}
