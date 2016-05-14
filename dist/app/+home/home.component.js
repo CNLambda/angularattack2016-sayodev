@@ -28,10 +28,14 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.new_board = function () {
         var _this = this;
-        this.http.post(this.url, "{}")
-            .subscribe(function (data) { return _this.data = data; });
-        console.log(this.data);
-        location.href = "../#" + this.data;
+        this.data1 = this.http.post(this.url, "{}")
+            .subscribe(function (data) {
+            _this.startboard(data.json().board_id);
+        }, function (err) { return console.log(err.json().message); }, function () { return console.log('Creating Complete'); });
+    };
+    HomeComponent.prototype.startboard = function (id) {
+        console.log(id);
+        location.href = "../#" + id;
     };
     HomeComponent = __decorate([
         core_1.Component({

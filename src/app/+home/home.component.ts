@@ -32,12 +32,20 @@ export class HomeComponent implements OnInit {
     }
 
     new_board() {
-        this.http.post(this.url, "{}")
-            .subscribe(
-                data => this.data1 = data
+         this.data1 = this.http.post(this.url, "{}")
+         .subscribe(
+            data => {
+                this.startboard(data.json().board_id);
+                },
+                err => console.log(err.json().message),
+                () => console.log('Creating Complete')
             );
-        console.log(this.data1);
-        location.href = "../#" + this.data1;
+    }
+
+
+    startboard(id) {
+    console.log(id);
+    location.href = "../#" + id;
     }
 
 }
