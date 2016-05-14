@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   new_board() {
-      location.href = "../#/board";
+      location.href = "../board";
   }
 
 }

@@ -23,7 +23,7 @@ var HomeComponent = (function () {
         this.model = new FormModel();
     };
     HomeComponent.prototype.new_board = function () {
-        location.href = "../#/board";
+        location.href = "../board";
     };
     HomeComponent = __decorate([
         core_1.Component({
