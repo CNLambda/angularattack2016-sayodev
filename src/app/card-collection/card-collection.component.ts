@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardComponent } from '../card';
 
 @Component({
   moduleId: module.id,
