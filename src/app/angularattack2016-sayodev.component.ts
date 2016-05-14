@@ -19,7 +19,9 @@ import { UsersComponent } from './users';
 ])
 export class Angularattack2016SayodevAppComponent implements OnInit {
 
-    constructor(private router: Router) {}
+    constructor(router: Router) {
+        this.router = router;
+    }
 
     ngOnInit() {
         this.router.navigate(['/home']);
