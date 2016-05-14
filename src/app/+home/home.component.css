@@ -20,3 +20,14 @@
     font-size: 40pt;
     text-align:center;
 }
+#bckgrnd{
+    background-color: #EEE; //later an backgroud image
+    background-size: auto 100%;
+    position:fixed;
+    z-index:1;
+    top:0;
+    bottom:0;
+    left:0;
+    bottom:0;
+    filter: blur(3px); brightness(50%);
+}
