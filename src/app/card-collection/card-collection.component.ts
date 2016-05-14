@@ -11,7 +11,7 @@ import { CardComponent } from '../card';
 export class CardCollectionComponent implements OnInit {
 
     public cards: {"title": string, "type": string, "content": any}[];
-    public card_table: {"title": string, "type": string, "content": any}[][];
+    public card_table: {"title": string, "type": string, "content": any, "id": number}[][];
     public collumns: number;
 
     constructor() {
@@ -25,16 +25,18 @@ export class CardCollectionComponent implements OnInit {
             {"title": "We like jQuery.","type": "text","content": "..."},
             {"title": "I like trains.","type": "text","content": "..."}
         ];
+        this.collumns = 3;
     }
 
     ngOnInit() {
         let this_component: CardCollectionComponent = this;
-        var rtime: number;
+        let rtime: number;
         let timeout: boolean = false;
         let delta: number = 300;
 
         document.addEventListener("resize", function() {
-            rtime = (new Date()).now();
+            let date: any = new Date();
+            rtime = date.now();
             if (timeout === false) {
                 timeout = true;
                 setTimeout(resizeend, delta);
@@ -42,13 +44,16 @@ export class CardCollectionComponent implements OnInit {
         });
 
         function resizeend() {
-            if ((new Date()).now() - rtime < delta) {
+            let date: any = new Date();
+            if (date.now() - rtime < delta) {
                 setTimeout(resizeend, delta);
             } else {
                 timeout = false;
                 this_component.reorderCards();
             }
         }
+
+        this.reorderCards();
     }
 
     reorderCards() {
@@ -59,18 +64,28 @@ export class CardCollectionComponent implements OnInit {
             for (let i: number = 0; i < this.collumns; i++) {
                 this.card_table.push([]);
             }
-            for (let i: number = 0; i < this.cards.length; i++) {
-                let minimum: number = Infinity;
-                let id: number = -1;
-                for (let j: number = 0; j < 3; j++) {
-                    var current_height = document.getElementById("#collumn" + j.toString()).offsetHeight;
-                    if (current_height < minimum) {
-                        minimum = current_height;
-                        id = j;
+            window.setTimeout(() => {
+                for (let i: number = 0; i < this.cards.length; i++) {
+                    let minimum: number = Infinity;
+                    let id: number = -1;
+                    let current_card: {"title": string, "type": string, "content": any};
+                    for (let j: number = 0; j < 3; j++) {
+                        console.log("#collumn" + (j+1).toString());
+                        var current_height = document.getElementById("#collumn" + (j+1).toString()).offsetHeight;
+                        if (current_height < minimum) {
+                            minimum = current_height;
+                            id = j;
+                        }
                     }
+                    current_card = this.cards[i];
+                    this.card_table[id].push({
+                        "title": current_card.title,
+                        "type": current_card.type,
+                        "content": current_card.content,
+                        "id": i
+                    });
                 }
-                this.card_table[id].push(this.cards[id]);
-            }
+            }, 100);
         } else {
             this.collumns = 1;
         }

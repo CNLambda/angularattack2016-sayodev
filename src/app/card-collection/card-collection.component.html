@@ -1,1 +1,8 @@
-<card *ngFor="#card_data of cards" [data]="card_data" [id]="index" (on_delete)="delete(index)"></card>
+<div *ngIf="collumns == 1">
+    <card *ngFor="#card_data of cards" [data]="card_data" [id]="index" (on_delete)="delete(index)"></card>
+</div>
+<div *ngIf="collumns != 1" class="row">
+    <div *ngFor="#cards_in_collumn of card_table" id="{{'collumn' + index.toString()}}">
+        <card *ngFor="#card_data of cards_in_collumn" [data]="card_data" [id]="card_data.id" (on_delete)="delete(card_data.id)"></card>
+    </div>
+</div>
