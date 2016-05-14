@@ -19,15 +19,15 @@ export class FormModel {
 export class HomeComponent implements OnInit {
 
     model: FormModel;
-
-    constructor() {}
+    private url = 'https://angularattack2016-sayodev.herokuapp.com/board/create';
+    constructor(private http: Http) {}
 
     ngOnInit() {
         this.model = new FormModel();
     }
 
     new_board() {
-        
+        this.http.post(this.url);
         location.href = "../#new_id";
     }
 
