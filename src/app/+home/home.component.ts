@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
-
 export class FormModel {
     public nickname: string
 
@@ -22,7 +21,6 @@ export class HomeComponent implements OnInit {
 
      constructor (private http: Http) {}
 
-    }
 
     private url = 'https://angularattack2016-sayodev.herokuapp.com/board/create';
 
@@ -32,26 +30,7 @@ export class HomeComponent implements OnInit {
     }
 
     new_board() {
-
-
-this.http.post(this.url)
-
-         .toPromise()
-
-         .then(res => {
-            if(res.ok){
-                console.log(res.text());
-            }
-
-          })
-
-         .catch(err => {
-
-            // Do some Fehlerbehandlung.
-
-          });
-
-
+        this.http.post(this.url);
         location.href = "../#new_id";
     }
 
