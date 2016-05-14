@@ -28,6 +28,7 @@ var barrels = [
     'app/chat',
     'app/card',
     'app/users',
+    'app/+home',
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {
