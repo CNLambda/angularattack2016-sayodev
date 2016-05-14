@@ -23,6 +23,10 @@ var barrels = [
     // App specific barrels.
     'app',
     'app/shared',
+    'app/card-collection',
+    'app/ui-overlay',
+    'app/chat',
+    'app/card',
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {

@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-title">{{card_data.title}}</div>
+    <div class="content">
+        <text-card *ngIf="card_data.card_type == 'text'" [card_data]="{{card_data}}"></text-card>
+        <link-card *ngIf="card_data.card_type == 'link'" [card_data]="{{card_data}}"></link-card>
+        <image-card *ngIf="card_data.card_type == 'image'" [card_data]="{{card_data}}"></image-card>
+        <canvas-card *ngIf="card_data.card_type == 'canvas'" [card_data]="{{card_data}}"></canvas-card>
+        <file-card *ngIf="card_data.card_type == 'file'" [card_data]="{{card_data}}"></file-card>
+    </div>
+    <div class="card-controls">
+        <!-- TODO -->
+    </div>
+</div>

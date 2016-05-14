@@ -18,8 +18,6 @@
 
   "files": [
     "main.ts",
-    "typings.d.ts",
-    "app/angularattack2016-sayodev.component.ts",
-    "app/angularattack2016-sayodev.component.spec.ts"
+    "typings.d.ts"
   ]
 }
