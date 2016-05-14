@@ -11,7 +11,7 @@ import { UsersComponent } from './users';
   selector: 'angularattack2016-sayodev-app',
   templateUrl: 'angularattack2016-sayodev.component.html',
   styleUrls: ['angularattack2016-sayodev.component.css'],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, CardCollectionComponent, UiOverlayComponent, ChatComponent, UsersComponent],
   providers: [ROUTER_PROVIDERS]
 })
 @Routes([

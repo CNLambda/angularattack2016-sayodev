@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var card_1 = require('../card');
 var CardCollectionComponent = (function () {
     function CardCollectionComponent() {
         this.cards = [];
@@ -23,7 +24,8 @@ var CardCollectionComponent = (function () {
             moduleId: module.id,
             selector: 'card-collection',
             templateUrl: 'card-collection.component.html',
-            styleUrls: ['card-collection.component.css']
+            styleUrls: ['card-collection.component.css'],
+            directives: [card_1.CardComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], CardCollectionComponent);

@@ -19,7 +19,7 @@ var CardComponent = (function () {
         this.content = null;
     }
     CardComponent.prototype.ngOnInit = function () {
-        var data = JSON.parse(this.card_data);
+        var data = JSON.parse(this.data);
         this.title = data.title;
         this.type = data.type;
         this.content = data.content;
@@ -36,7 +36,7 @@ var CardComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], CardComponent.prototype, "card_data", void 0);
+    ], CardComponent.prototype, "data", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)

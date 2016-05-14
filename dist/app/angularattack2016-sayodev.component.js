@@ -11,6 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var _home_1 = require('./+home');
 var router_1 = require('@angular/router');
+var card_collection_1 = require('./card-collection');
+var ui_overlay_1 = require('./ui-overlay');
+var chat_1 = require('./chat');
+var users_1 = require('./users');
 var Angularattack2016SayodevAppComponent = (function () {
     function Angularattack2016SayodevAppComponent() {
         this.title = 'angularattack2016-sayodev works!';
@@ -21,7 +25,7 @@ var Angularattack2016SayodevAppComponent = (function () {
             selector: 'angularattack2016-sayodev-app',
             templateUrl: 'angularattack2016-sayodev.component.html',
             styleUrls: ['angularattack2016-sayodev.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES],
+            directives: [router_1.ROUTER_DIRECTIVES, card_collection_1.CardCollectionComponent, ui_overlay_1.UiOverlayComponent, chat_1.ChatComponent, users_1.UsersComponent],
             providers: [router_1.ROUTER_PROVIDERS]
         }),
         router_1.Routes([

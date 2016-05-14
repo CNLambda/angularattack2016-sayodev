@@ -5,7 +5,8 @@ import { CardComponent } from '../card';
   moduleId: module.id,
   selector: 'card-collection',
   templateUrl: 'card-collection.component.html',
-  styleUrls: ['card-collection.component.css']
+  styleUrls: ['card-collection.component.css'],
+  directives: [CardComponent]
 })
 export class CardCollectionComponent implements OnInit {
 
