@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CardComponent } from '../card';
 
-
-var jQuery;
-
-
 @Component({
   moduleId: module.id,
   selector: 'card-collection',
@@ -14,7 +10,9 @@ var jQuery;
 })
 export class CardCollectionComponent implements OnInit {
 
-    cards: {"title": string, "type": string, "content": any}[];
+    public cards: {"title": string, "type": string, "content": any}[];
+    public card_table: {"title": string, "type": string, "content": any}[][];
+    public collumns: number;
 
     constructor() {
         this.cards = [
@@ -30,39 +28,56 @@ export class CardCollectionComponent implements OnInit {
     }
 
     ngOnInit() {
-        window.setInterval(() => {
-            let collumns: number = 1;
-            let collumn_data: number[] = [];
-            if(window.matchMedia("(min-width: 3.5in)").matches) {
-                collumns = 3;
-                collumn_data = [0, 0, 0];
-                for (let i: number = 0; i < this.cards.length; i++) {
-                    let minimum: number = Infinity;
-                    let id: number = -1;
-                    for (let j: number = 0; j < 3; j++) {
-                        if (collumn_data[j] < minimum) {
-                            minimum = collumn_data[j];
-                            id = j;
-                        }
-                    }
-                    jQuery("#card" + i.toString()).css("position", "absolute");
-                    jQuery("#card" + i.toString()).css("width", "30%");
-                    jQuery("#card" + i.toString()).css("left",  (2*(id + 1) + 30*id).toString() + "%");
-                    jQuery("#card" + i.toString()).css("top", (8 + minimum).toString() + "px");
-                    collumn_data[id] += jQuery("#card" + i.toString()).height();;
-                }
-            } else {
-                for (let i: number = 0; i < this.cards.length; i++) {
-                    jQuery("#card" + i.toString()).css("position", "relative");
-                    jQuery("#card" + i.toString()).css("width", "100%");
-                    jQuery("#card" + i.toString()).css("left", "0");
-                    jQuery("#card" + i.toString()).css("top", "0");
-                }
+        let this_component: CardCollectionComponent = this;
+        var rtime: number;
+        let timeout: boolean = false;
+        let delta: number = 300;
+
+        document.addEventListener("resize", function() {
+            rtime = (new Date()).now();
+            if (timeout === false) {
+                timeout = true;
+                setTimeout(resizeend, delta);
             }
-        }, 100);
+        });
+
+        function resizeend() {
+            if ((new Date()).now() - rtime < delta) {
+                setTimeout(resizeend, delta);
+            } else {
+                timeout = false;
+                this_component.reorderCards();
+            }
+        }
+    }
+
+    reorderCards() {
+        let collumn_data: number[] = [];
+        if(window.matchMedia("(min-width: 3in)").matches) {
+            this.collumns = 3;
+            this.card_table = [];
+            for (let i: number = 0; i < this.collumns; i++) {
+                this.card_table.push([]);
+            }
+            for (let i: number = 0; i < this.cards.length; i++) {
+                let minimum: number = Infinity;
+                let id: number = -1;
+                for (let j: number = 0; j < 3; j++) {
+                    var current_height = document.getElementById("#collumn" + j.toString()).offsetHeight;
+                    if (current_height < minimum) {
+                        minimum = current_height;
+                        id = j;
+                    }
+                }
+                this.card_table[id].push(this.cards[id]);
+            }
+        } else {
+            this.collumns = 1;
+        }
     }
 
     delete(index: number) {
+        this.reorderCards();
         this.cards.splice(index, 1);
     }
 
