@@ -65,7 +65,7 @@ export class CardCollectionComponent implements OnInit {
                 this.card_table.push([]);
             }
             for (let i: number = 0; i < this.cards.length; i++) {
-                let current_card: {"title": string, "type": string, "content": any} = this.cards[i];
+                let current_card: {"title": string, "type": string, "content": any, "color": string} = this.cards[i];
                 this.card_table[0].push({
                     "title": current_card.title,
                     "type": current_card.type,
@@ -83,7 +83,7 @@ export class CardCollectionComponent implements OnInit {
                 for (let i: number = 0; i < this.cards.length; i++) {
                     let minimum: number = Infinity;
                     let id: number = -1;
-                    let current_card: {"title": string, "type": string, "content": any};
+                    let current_card: {"title": string, "type": string, "content": any, "color": string};
                     for (let j: number = 0; j < 3; j++) {
                         if (collumn_data[j] < minimum) {
                             minimum = collumn_data[j];

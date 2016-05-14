@@ -15,15 +15,16 @@ var CardComponent = (function () {
     function CardComponent() {
         this.on_delete = new core_1.EventEmitter();
         this.title = '';
-        this.type = '';
+        this.type = 'text';
         this.color = 'white';
         this.editing = false;
-        this.content = null;
+        this.content = '...';
     }
     CardComponent.prototype.ngOnInit = function () {
         this.title = this.data.title;
         this.type = this.data.type;
         this.content = this.data.content;
+        this.color = this.data.color;
     };
     CardComponent.prototype.changeColor = function (new_color) {
         this.color = new_color;
