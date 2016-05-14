@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var HomeComponent = (function () {
     function HomeComponent() {
     }
@@ -19,7 +20,9 @@ var HomeComponent = (function () {
             moduleId: module.id,
             selector: 'home',
             templateUrl: 'home.component.html',
-            styleUrls: ['home.component.css']
+            styleUrls: ['home.component.css'],
+            directives: [router_1.ROUTER_DIRECTIVES],
+            providers: [router_1.ROUTER_PROVIDERS]
         }), 
         __metadata('design:paramtypes', [])
     ], HomeComponent);
