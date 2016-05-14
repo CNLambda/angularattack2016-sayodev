@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var _home_1 = require('./+home');
+var board_1 = require('./board');
 var router_1 = require('@angular/router');
 var card_collection_1 = require('./card-collection');
 var ui_overlay_1 = require('./ui-overlay');
@@ -32,7 +33,8 @@ var Angularattack2016SayodevAppComponent = (function () {
             providers: [router_1.ROUTER_PROVIDERS]
         }),
         router_1.Routes([
-            { path: '/home', component: _home_1.HomeComponent }
+            { path: '/home', component: _home_1.HomeComponent },
+            { path: '/board', component: board_1.BoardComponent }
         ]), 
         __metadata('design:paramtypes', [router_1.Router])
     ], Angularattack2016SayodevAppComponent);

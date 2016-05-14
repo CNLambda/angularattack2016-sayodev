@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeComponent } from './+home';
+import { BoardComponent } from './board';
 import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import { CardCollectionComponent } from './card-collection';
 import { UiOverlayComponent } from './ui-overlay';
@@ -15,7 +16,8 @@ import { UsersComponent } from './users';
   providers: [ROUTER_PROVIDERS]
 })
 @Routes([
-    {path: '/home', component: HomeComponent}
+    {path: '/home', component: HomeComponent},
+    {path: '/board', component: BoardComponent}
 ])
 export class Angularattack2016SayodevAppComponent implements OnInit {
 
