@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeComponent } from './+home';
-import { Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
+import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import { CardCollectionComponent } from './card-collection';
 import { UiOverlayComponent } from './ui-overlay';
 import { ChatComponent } from './chat';
@@ -19,9 +19,7 @@ import { UsersComponent } from './users';
 ])
 export class Angularattack2016SayodevAppComponent implements OnInit {
 
-    constructor(router: Router) {
-        this.router = router;
-    }
+    constructor(private router: Router) {}
 
     ngOnInit() {
         this.router.navigate(['/home']);
