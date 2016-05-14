@@ -13,8 +13,8 @@ var card_1 = require('../card');
 var CardCollectionComponent = (function () {
     function CardCollectionComponent(myElement) {
         this.cards = [
-            { "title": "Yay!", "type": "image", "content": "..." },
-            { "title": "Whoooo!", "type": "text", "content": "..." },
+            { "title": "Yay!", "type": "text", "content": "Text Nr. 1" },
+            { "title": "Whoooo!", "type": "text", "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
             { "title": "I don't like Angular2", "type": "text", "content": "..." },
             { "title": "I don't like Angular", "type": "text", "content": "..." },
             { "title": "Shit happens.", "type": "text", "content": "..." },
