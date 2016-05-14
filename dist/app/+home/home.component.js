@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
 var FormModel = (function () {
     function FormModel() {
         this.nickname = '';
@@ -18,25 +17,22 @@ var FormModel = (function () {
 }());
 exports.FormModel = FormModel;
 var HomeComponent = (function () {
-    function HomeComponent(router) {
-        this.router = router;
+    function HomeComponent() {
     }
     HomeComponent.prototype.ngOnInit = function () {
         this.model = new FormModel();
     };
     HomeComponent.prototype.new_board = function () {
-        this.router.navigate(['/board']);
+        location.href = "../#board";
     };
     HomeComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'home',
             templateUrl: 'home.component.html',
-            styleUrls: ['home.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [router_1.ROUTER_PROVIDERS]
+            styleUrls: ['home.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [])
     ], HomeComponent);
     return HomeComponent;
 }());

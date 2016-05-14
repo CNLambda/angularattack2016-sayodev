@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router } from '@angular/router';
 
 
 export class FormModel {
@@ -15,22 +14,20 @@ export class FormModel {
   moduleId: module.id,
   selector: 'home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css'],
-  directives: [ROUTER_DIRECTIVES],
-  providers: [ROUTER_PROVIDERS]
+  styleUrls: ['home.component.css']
 })
 export class HomeComponent implements OnInit {
 
   model: FormModel;
 
-  constructor(public router: Router) {}
+  constructor() {}
 
   ngOnInit() {
       this.model = new FormModel();
   }
 
   new_board() {
-      this.router.navigate(['/board']);
+      location.href="../#board"
   }
 
 }
