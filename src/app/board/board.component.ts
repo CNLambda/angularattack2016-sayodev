@@ -13,6 +13,8 @@ import { UsersComponent } from './users';
 })
 export class BoardComponent implements OnInit {
 
+  title: string = "BrainShare";
+
   constructor() {}
 
   ngOnInit() {
