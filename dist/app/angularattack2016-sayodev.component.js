@@ -15,6 +15,7 @@ var router_1 = require('@angular/router');
 var Angularattack2016SayodevAppComponent = (function () {
     function Angularattack2016SayodevAppComponent(router) {
         this.router = router;
+        this.title = "BrainShare";
     }
     Angularattack2016SayodevAppComponent.prototype.ngOnInit = function () {
         this.router.navigate(['/home']);

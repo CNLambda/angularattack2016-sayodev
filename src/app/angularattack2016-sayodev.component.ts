@@ -17,6 +17,8 @@ import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/ro
 ])
 export class Angularattack2016SayodevAppComponent implements OnInit {
 
+    title = "BrainShare";
+
     constructor(private router: Router) {}
 
     ngOnInit() {
