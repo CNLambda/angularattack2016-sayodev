@@ -70,8 +70,8 @@ export class CardCollectionComponent implements OnInit {
                     let id: number = -1;
                     let current_card: {"title": string, "type": string, "content": any};
                     for (let j: number = 0; j < 3; j++) {
-                        console.log("#collumn" + (j+1).toString());
-                        var current_height = document.getElementById("#collumn" + (j+1).toString()).offsetHeight;
+                        console.log("#collumn" + (j).toString());
+                        var current_height = document.getElementById("#collumn" + (j).toString()).offsetHeight;
                         if (current_height < minimum) {
                             minimum = current_height;
                             id = j;
