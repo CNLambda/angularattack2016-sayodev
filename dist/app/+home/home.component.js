@@ -26,7 +26,10 @@ var HomeComponent = (function () {
         this.model = new FormModel();
     };
     HomeComponent.prototype.new_board = function () {
-        this.http.post(this.url, "");
+        var _this = this;
+        this.http.post(this.url, "{}")
+            .subscribe(function (data) { return _this.data = data; });
+        console.log(this.data);
         location.href = "../#new_id";
     };
     HomeComponent = __decorate([
