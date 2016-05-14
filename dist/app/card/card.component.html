@@ -1,17 +1,17 @@
-<div class="card">
-    <div class="card-title">{{title}}</div>
-    <div class="content">
-        <!--<text-card *ngIf="type == 'text'" [card_data]="{{card_data}}"></text-card>
-        <link-card *ngIf="type == 'link'" [card_data]="{{card_data}}"></link-card>
-        <image-card *ngIf="ype == 'image'" [card_data]="{{card_data}}"></image-card>
-        <canvas-card *ngIf="type == 'canvas'" [card_data]="{{card_data}}"></canvas-card>
-        <file-card *ngIf="type == 'file'" [card_data]="{{card_data}}"></file-card>-->
-    </div>
-    <div class="card-controls">
-        <a class="btn-floating waves-effect waves-light blue">
+<div class="card {{color}}">
+    <span *ngIf="title != ''" class="card-title">{{title}}</span>
+    <!--
+        <text-card *ngIf="type == 'text'" [text]="{{content}}" [editing]="{{editing}}"></text-card>
+        <link-card *ngIf="type == 'link'" [link]="{{content}}" [editing]="{{editing}}"></link-card>
+        <image-card *ngIf="ype == 'image'" [link]="{{content}}" [editing]="{{editing}}"></image-card>
+        <canvas-card *ngIf="type == 'canvas'" [data]="{{content}}" [editing]="{{editing}}"></canvas-card>
+        <file-card *ngIf="type == 'file'" [link]="{{content}}" [editing]="{{editing}}"></file-card>
+    -->
+    <div class="card-action">
+        <a class="btn-floating waves-effect waves-light blue" (click)="toggle_edit()">
             <i class="material-icons">edit</i>
         </a>
-        <a class="btn-floating waves-effect waves-light blue">
+        <a class="btn-floating waves-effect waves-light blue" (click)="delete()">
             <i class="material-icons">delete</i>
         </a>
         <div class="fixed-action-btn vertical">
@@ -20,15 +20,13 @@
             </a>
             <ul>
                 <li>
-                    <a class="btn-floating white"></a>
-                    <a class="btn-floating red"></a>
-                    <a class="btn-floating blue"></a>
-                    <a class="btn-floating green"></a>
-                    <a class="btn-floating yellow"></a>
+                    <a class="btn-floating white darken-1" (click)="changeColor('white')"></a>
+                    <a class="btn-floating red darken-1" (click)="changeColor('red')"></a>
+                    <a class="btn-floating blue darken-1" (click)="changeColor('blue')"></a>
+                    <a class="btn-floating green darken-1" (click)="changeColor('green')"></a>
+                    <a class="btn-floating yellow darken-1" (click)="changeColor('yellow')"></a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-<script src="../../js/jquery.min.js"></script>
-<script src="../../js/materialize.min.js"></script>

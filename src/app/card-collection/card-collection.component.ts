@@ -8,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardCollectionComponent implements OnInit {
 
+    cards: string[];
+
     constructor() {
         this.cards = [];
     }
 
     ngOnInit() {
+    }
+
+    delete(index: number) {
+        this.cards.delete(index);
     }
 
 }
