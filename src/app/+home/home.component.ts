@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
                 data => this.data = data
             );
         console.log(this.data);
-        location.href = "../#new_id";
+        location.href = "../#" + this.data
     }
 
 }

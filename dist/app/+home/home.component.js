@@ -31,7 +31,7 @@ var HomeComponent = (function () {
         this.http.post(this.url, "{}")
             .subscribe(function (data) { return _this.data = data; });
         console.log(this.data);
-        location.href = "../#new_id";
+        location.href = "../#" + this.data;
     };
     HomeComponent = __decorate([
         core_1.Component({
