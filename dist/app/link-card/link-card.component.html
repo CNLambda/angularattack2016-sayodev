@@ -1,6 +1,4 @@
 <h5 *ngIf="!editing">
   <a href="{{link}}" target="_blank">{{link}}</a>
 </h5>
-<span [hidden]="!editing">
-    <input [(ngModel)]="link" type="text"  />
-</span>
+<input [hidden]="!editing" [(ngModel)]="link" type="text"  />

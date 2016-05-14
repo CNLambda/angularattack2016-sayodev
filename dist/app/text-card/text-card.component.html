@@ -1,1 +1,2 @@
-<p [innerHTML]="text"></p>
+<p *ngIf="!editing"> {{text}} </p>
+<textarea [hidden]="!editing" [(ngModel)]="text" class="materialize-textarea"></textarea>

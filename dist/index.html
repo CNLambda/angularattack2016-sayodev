@@ -50,6 +50,10 @@
   <script src="vendor/zone.js/dist/zone.js"></script>
 
   <script>
+    window.setInterval(function () {
+        $(".materialize-textarea").trigger("autoresize");
+    }, 1000);
+
     System.import('system-config.js').then(function() {
       System.import('main');
     }).catch(console.error.bind(console));
