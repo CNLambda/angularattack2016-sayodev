@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     }
 
     new_board() {
-        this.http.get(this.url);
+        this.http.post(this.url, "{}");
         location.href = "../#new_id";
     }
 

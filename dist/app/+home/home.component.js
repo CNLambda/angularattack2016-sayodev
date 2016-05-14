@@ -26,7 +26,7 @@ var HomeComponent = (function () {
         this.model = new FormModel();
     };
     HomeComponent.prototype.new_board = function () {
-        this.http.get(this.url);
+        this.http.post(this.url, "");
         location.href = "../#new_id";
     };
     HomeComponent = __decorate([
