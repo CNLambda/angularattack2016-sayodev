@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var card_1 = require('../card');
-var jQuery;
 var CardCollectionComponent = (function () {
     function CardCollectionComponent() {
         this.cards = [
@@ -23,43 +22,71 @@ var CardCollectionComponent = (function () {
             { "title": "We like jQuery.", "type": "text", "content": "..." },
             { "title": "I like trains.", "type": "text", "content": "..." }
         ];
+        this.collumns = 3;
     }
     CardCollectionComponent.prototype.ngOnInit = function () {
+        var this_component = this;
+        var rtime;
+        var timeout = false;
+        var delta = 300;
+        document.addEventListener("resize", function () {
+            var date = new Date();
+            rtime = date.now();
+            if (timeout === false) {
+                timeout = true;
+                setTimeout(resizeend, delta);
+            }
+        });
+        function resizeend() {
+            var date = new Date();
+            if (date.now() - rtime < delta) {
+                setTimeout(resizeend, delta);
+            }
+            else {
+                timeout = false;
+                this_component.reorderCards();
+            }
+        }
+        this.reorderCards();
+    };
+    CardCollectionComponent.prototype.reorderCards = function () {
         var _this = this;
-        window.setInterval(function () {
-            var collumns = 1;
-            var collumn_data = [];
-            if (window.matchMedia("(min-width: 3.5in)").matches) {
-                collumns = 3;
-                collumn_data = [0, 0, 0];
+        var collumn_data = [];
+        if (window.matchMedia("(min-width: 3in)").matches) {
+            this.collumns = 3;
+            this.card_table = [];
+            for (var i = 0; i < this.collumns; i++) {
+                this.card_table.push([]);
+            }
+            window.setTimeout(function () {
                 for (var i = 0; i < _this.cards.length; i++) {
                     var minimum = Infinity;
                     var id = -1;
+                    var current_card = void 0;
                     for (var j = 0; j < 3; j++) {
-                        if (collumn_data[j] < minimum) {
-                            minimum = collumn_data[j];
+                        console.log("#collumn" + (j).toString());
+                        var current_height = document.getElementById("#collumn" + (j).toString()).offsetHeight;
+                        if (current_height < minimum) {
+                            minimum = current_height;
                             id = j;
                         }
                     }
-                    jQuery("#card" + i.toString()).css("position", "absolute");
-                    jQuery("#card" + i.toString()).css("width", "30%");
-                    jQuery("#card" + i.toString()).css("left", (2 * (id + 1) + 30 * id).toString() + "%");
-                    jQuery("#card" + i.toString()).css("top", (8 + minimum).toString() + "px");
-                    collumn_data[id] += jQuery("#card" + i.toString()).height();
-                    ;
+                    current_card = _this.cards[i];
+                    _this.card_table[id].push({
+                        "title": current_card.title,
+                        "type": current_card.type,
+                        "content": current_card.content,
+                        "id": i
+                    });
                 }
-            }
-            else {
-                for (var i = 0; i < _this.cards.length; i++) {
-                    jQuery("#card" + i.toString()).css("position", "relative");
-                    jQuery("#card" + i.toString()).css("width", "100%");
-                    jQuery("#card" + i.toString()).css("left", "0");
-                    jQuery("#card" + i.toString()).css("top", "0");
-                }
-            }
-        }, 100);
+            }, 100);
+        }
+        else {
+            this.collumns = 1;
+        }
     };
     CardCollectionComponent.prototype.delete = function (index) {
+        this.reorderCards();
         this.cards.splice(index, 1);
     };
     CardCollectionComponent = __decorate([
