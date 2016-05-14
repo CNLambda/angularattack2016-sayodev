@@ -10,10 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var FormModel = (function () {
+    function FormModel() {
+        this.nickname = '';
+    }
+    return FormModel;
+}());
+exports.FormModel = FormModel;
 var HomeComponent = (function () {
-    function HomeComponent() {
+    function HomeComponent(router) {
+        this.router = router;
     }
     HomeComponent.prototype.ngOnInit = function () {
+        this.model = new FormModel();
+    };
+    HomeComponent.prototype.new_board = function () {
+        this.router.navigate(['/board']);
     };
     HomeComponent = __decorate([
         core_1.Component({
@@ -24,7 +36,7 @@ var HomeComponent = (function () {
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [router_1.ROUTER_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], HomeComponent);
     return HomeComponent;
 }());

@@ -9,13 +9,14 @@
             <div class="col s12">
                 <div class="row">
                     <div class="input-field col s8">
-                        <input id="icon_prefix" type="text" class="validate" />
+                        <input [(ngModel)]="model.nickname" id="icon_prefix" type="text" class="validate" />
                         <label for="icon_prefix">
                             Nickname
                         </label>
                     </div>
                     <div class="col s4">
-                        <a class="waves-effect waves-light btn input-field" [routerLink]="['../board']">
+                        <!--<a class="waves-effect waves-light btn input-field" [routerLink]="['../board']">-->
+                        <a class="waves-effect waves-light btn input-field" (onClick)="new_board()">
                             <i class="material-icons">
                                 add
                             </i>
