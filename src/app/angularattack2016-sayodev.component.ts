@@ -15,6 +15,9 @@ import { UsersComponent } from './users';
   providers: [ROUTER_PROVIDERS]
 })
 @Routes([
+    {path: '/home', component: HomeComponent}
+])
+@Routes([
     {path: '/home', component: HomeComponent, as: "Home"}
 ])
 export class Angularattack2016SayodevAppComponent {
