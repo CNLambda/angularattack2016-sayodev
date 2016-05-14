@@ -11,7 +11,7 @@ import { LinkCardComponent } from '../link-card';
 })
 export class CardComponent implements OnInit {
 
-    @Input() data: {"title": string, "type": string, "content": any};
+    @Input() data: {"title": string, "type": string, "content": any, "color": string};
     @Input() id: number;
     @Output() on_delete: EventEmitter<void> = new EventEmitter<void>();
     public title: string;
@@ -22,16 +22,17 @@ export class CardComponent implements OnInit {
 
     constructor() {
         this.title = '';
-        this.type = '';
+        this.type = 'text';
         this.color = 'white';
         this.editing = false;
-        this.content = null;
+        this.content = '...';
     }
 
     ngOnInit() {
         this.title = this.data.title;
         this.type = this.data.type;
         this.content = this.data.content;
+        this.color = this.data.color;
     }
 
     changeColor(new_color) {

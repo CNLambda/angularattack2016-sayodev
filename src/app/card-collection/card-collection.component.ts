@@ -10,21 +10,21 @@ import { CardComponent } from '../card';
 })
 export class CardCollectionComponent implements OnInit {
 
-    public cards: {"title": string, "type": string, "content": any}[];
-    public card_table: {"title": string, "type": string, "content": any, "id": number}[][];
+    public cards: {"title": string, "type": string, "content": any, "color": string}[];
+    public card_table: {"title": string, "type": string, "content": any, "color": string, "id": number}[][];
     public collumns: number;
     public element: ElementRef;
 
     constructor(myElement: ElementRef) {
         this.cards = [
-            {"title": "Text!","type": "text","content": "Card Nr. 1"},
-            {"title": "Lorem Ipsum Text!","type": "text","content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-            {"title": "This is Google.","type": "link","content": "http://www.google.de"},
-            {"title": "This isn´t Google.","type": "text","content": "..."},
-            {"title": "Want some more cards?","type": "text","content": "..."},
-            {"title": "It will happen at some point.","type": "text","content": "..."},
-            {"title": "Look at those colors!","type": "text","content": "..."},
-            {"title": "BrainShare","type": "text","content": "was made by 3 german students at the age of ~16, who happen to <b>really</b> like coding."}
+            {"title": "Text!","type": "text","content": "Card Nr. 1","color":"white"},
+            {"title": "Lorem Ipsum Text!","type": "text","content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","color":"white"},
+            {"title": "This is Google.","type": "link","content": "http://www.google.de","color":"white"},
+            {"title": "This isn´t Google.","type": "text","content": "...","color":"white"},
+            {"title": "Want some more cards?","type": "text","content": "...","color":"white"},
+            {"title": "It will happen at some point.","type": "text","content": "...","color":"white"},
+            {"title": "Look at those colors!","type": "text","content": "...","color":"white"},
+            {"title": "BrainShare","type": "text","content": "was made by 3 german students at the age of ~16, who happen to <b>really</b> like coding.","color":"green"}
         ];
         this.collumns = 1;
         this.element = myElement;
@@ -70,6 +70,7 @@ export class CardCollectionComponent implements OnInit {
                     "title": current_card.title,
                     "type": current_card.type,
                     "content": current_card.content,
+                    "color": current_card.color,
                     "id": i
                 });
             }
@@ -94,6 +95,7 @@ export class CardCollectionComponent implements OnInit {
                         "title": current_card.title,
                         "type": current_card.type,
                         "content": current_card.content,
+                        "color": current_card.color,
                         "id": i
                     });
                     collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
