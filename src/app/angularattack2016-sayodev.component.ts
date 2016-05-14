@@ -17,7 +17,7 @@ import { UsersComponent } from './users';
 @Routes([
     {path: '/home', component: HomeComponent}
 ])
-@Routes([
+@RouteConfig([
     {path: '/home', component: HomeComponent, as: "Home"}
 ])
 export class Angularattack2016SayodevAppComponent {
