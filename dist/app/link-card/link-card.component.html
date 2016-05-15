@@ -1,4 +1,4 @@
 <h5 *ngIf="!editing">
-  <a href="{{link}}" target="_blank">{{link}}</a>
+  <a href="{{link}}" target="_blank">{{beautify_link(link)}}</a>
 </h5>
-<input [hidden]="!editing" [(ngModel)]="link" type="text" (keypress)="on_change.emit(link)" />
+<input [hidden]="!editing" [(ngModel)]="link" type="text" (change)="on_change.emit(link)" />

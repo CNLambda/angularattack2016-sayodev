@@ -15,6 +15,9 @@ var FileCardComponent = (function () {
     }
     FileCardComponent.prototype.ngOnInit = function () {
     };
+    FileCardComponent.prototype.beautify_link = function (link) {
+        return this.link.split("/")[2];
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
@@ -30,7 +33,7 @@ var FileCardComponent = (function () {
     FileCardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'app-file-card',
+            selector: 'file-card',
             templateUrl: 'file-card.component.html',
             styleUrls: ['file-card.component.css']
         }), 

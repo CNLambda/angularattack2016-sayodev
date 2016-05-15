@@ -18,7 +18,7 @@ var UiOverlayComponent = (function () {
     }
     UiOverlayComponent.prototype.createCard = function (type) {
         console.log("function called...");
-        this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id(location.href) + "/card/create", JSON.stringify({ "type": type }))
+        this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id(location.href) + "/card/create", JSON.stringify({ "type": type, "title": "new card", "content": "put some content into this card!" }))
             .subscribe(function (data) {
         }, function (err) { return console.log(err.json().message); }, function () { return console.log('card done...'); });
     };

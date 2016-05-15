@@ -14,6 +14,12 @@ var LinkCardComponent = (function () {
         this.on_change = new core_1.EventEmitter();
     }
     LinkCardComponent.prototype.ngOnInit = function () {
+        if (!this.link.split("/")[0].endsWith(":")) {
+            this.link = "http://" + this.link;
+        }
+    };
+    LinkCardComponent.prototype.beautify_link = function (link) {
+        return this.link.split("/")[2];
     };
     __decorate([
         core_1.Input(), 

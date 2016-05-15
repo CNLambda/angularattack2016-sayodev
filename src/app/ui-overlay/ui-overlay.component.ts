@@ -17,7 +17,7 @@ export class UiOverlayComponent implements OnInit {
   
     private createCard(type: string){
         console.log("function called...");
-      this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id(location.href) + "/card/create", JSON.stringify({"type": type}))
+      this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id(location.href) + "/card/create", JSON.stringify({"type": type, "title": "new card", "content": "put some content into this card!"}))
           .subscribe(
                 data => {
                 },
