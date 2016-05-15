@@ -49,8 +49,26 @@ var CardCollectionComponent = (function () {
         var _this = this;
         this.data = this.http.get(this.url + this.get_id(location.href) + "/getInfo")
             .subscribe(function (data) {
+            function are_equal(old, new_) {
+                if (old.length != new_.length) {
+                    return true;
+                }
+                for (var i = 0; i < old.length; i++) {
+                    var a = old[i];
+                    var b = new_[i];
+                    if (a.title != b.title || a.type != b.type || a.color != b.color || a.content != b.content) {
+                        return true;
+                    }
+                }
+                return false;
+            }
             var new_ = data.json().cards;
-            if (JSON.stringify(new_) != JSON.stringify(_this.cards)) {
+            if (_this.cards.length != new_.length) {
+                _this.cards = new_;
+                _this.reorderCards();
+                return;
+            }
+            if (are_equal(new_, _this.cards)) {
                 _this.cards = new_;
                 _this.reorderCards();
             }

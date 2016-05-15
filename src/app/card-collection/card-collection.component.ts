@@ -31,8 +31,26 @@ export class CardCollectionComponent implements OnInit {
         this.data = this.http.get(this.url + this.get_id(location.href) + "/getInfo")
             .subscribe(
                 data => {
+                    function are_equal(old, new_): boolean {
+                        if (old.length != new_.length) {
+                            return true;
+                        }
+                        for (let i: number = 0; i < old.length; i++) {
+                            let a: any = old[i];
+                            let b: any = new_[i];
+                            if (a.title != b.title || a.type != b.type || a.color != b.color || a.content != b.content) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
                     let new_: any = data.json().cards;
-                    if (JSON.stringify(new_) != JSON.stringify(this.cards)) {
+                    if (this.cards.length != new_.length) {
+                        this.cards = new_;
+                        this.reorderCards();
+                        return;
+                    }
+                    if (are_equal(new_, this.cards)) {
                         this.cards = new_;
                         this.reorderCards();
                     }
