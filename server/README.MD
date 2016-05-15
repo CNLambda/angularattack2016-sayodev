@@ -1,6 +1,6 @@
 # brainshare backend
 
-powered by Heroku, Node.js and PostgreSQL.
+Powered by Heroku, Node.js and PostgreSQL.
 
 ## HTTP API
 / **GET** - root path
