@@ -20,8 +20,8 @@ import { Http, Response} from '@angular/http';
 })
 export class CardCollectionComponent implements OnInit {
 
-    public cards: {"title": string, "type": string, "content": any, "color": string}[];
-    public card_table: {"title": string, "type": string, "content": any, "color": string, "id": number}[][];
+    public cards: any;
+    public card_table: any;
     public collumns: number;
     public element: ElementRef;
     private url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
@@ -31,7 +31,7 @@ export class CardCollectionComponent implements OnInit {
         this.data = this.http.get(this.url + this.get_id(location.href) + "/getInfo")
             .subscribe(
                 data => {
-                    let new_: {"title": string, "type": string, "content": any, "color": string}[] = data.json().cards;
+                    let new_: any = data.json().cards;
                     if (JSON.stringify(new_) != JSON.stringify(this.cards)) {
                         this.cards = new_;
                         this.reorderCards();
@@ -123,7 +123,7 @@ export class CardCollectionComponent implements OnInit {
                 for (let i: number = 0; i < this.cards.length; i++) {
                     let minimum: number = Infinity;
                     let id: number = -1;
-                    let current_card: {"title": string, "type": string, "content": any, "color": string};
+                    let current_card: any;
                     for (let j: number = 0; j < 3; j++) {
                         if (collumn_data[j] < minimum) {
                             minimum = collumn_data[j];
@@ -136,6 +136,7 @@ export class CardCollectionComponent implements OnInit {
                         "type": current_card.type,
                         "content": current_card.content,
                         "color": current_card.color,
+                        "server_id": current_card.id,
                         "id": i
                     });
                     //collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;

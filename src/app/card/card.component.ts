@@ -12,7 +12,7 @@ import { ImageCardComponent } from '../image-card';
 })
 export class CardComponent implements OnInit {
 
-    @Input() data: {"title": string, "type": string, "content": any, "color": string};
+    @Input() data: any;
     @Input() id: number;
     @Output() on_delete: EventEmitter<void> = new EventEmitter<void>();
     public title: string;
@@ -43,9 +43,19 @@ export class CardComponent implements OnInit {
     toggle_edit() {
         this.editing = !this.editing;
     }
+    
+    get_id() : string {
+        let x = location.href;
+        let x2: string[] = x.split("/");
+        if (x2[x2.length - 1] == "") {
+            return x2[x2.length - 2];
+        } else {
+            return x2[x2.length - 1];
+        }
+    }
 
     delete() {
-        console.log("Deleted card " + this.id);
+        console.log("Deleted card " + this.data.server_id);
         this.on_delete.emit(null);
     }
 

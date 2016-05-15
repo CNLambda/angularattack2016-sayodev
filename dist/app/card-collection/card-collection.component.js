@@ -130,6 +130,7 @@ var CardCollectionComponent = (function () {
                         "type": current_card.type,
                         "content": current_card.content,
                         "color": current_card.color,
+                        "server_id": current_card.id,
                         "id": i
                     });
                     //collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;

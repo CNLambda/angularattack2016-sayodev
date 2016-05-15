@@ -33,8 +33,18 @@ var CardComponent = (function () {
     CardComponent.prototype.toggle_edit = function () {
         this.editing = !this.editing;
     };
+    CardComponent.prototype.get_id = function () {
+        var x = location.href;
+        var x2 = x.split("/");
+        if (x2[x2.length - 1] == "") {
+            return x2[x2.length - 2];
+        }
+        else {
+            return x2[x2.length - 1];
+        }
+    };
     CardComponent.prototype.delete = function () {
-        console.log("Deleted card " + this.id);
+        console.log("Deleted card " + this.data.server_id);
         this.on_delete.emit(null);
     };
     __decorate([
