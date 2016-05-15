@@ -110,37 +110,39 @@ export class CardCollectionComponent implements OnInit {
     reorderCards() {
         let collumn_data: number[] = [];
         if(window.matchMedia("(min-width: 8in)").matches) {
+            this.collumns = 3;
             window.setTimeout(() => {
-            let collumn_data: number[] = [];
-            for (let i: number = 0; i < this.cards.length; i++) {
-                collumn_data.push(0);
-            }
-            this.card_table = [];
-            for (let i: number = 0; i < this.collumns; i++) {
-                this.card_table.push([]);
-            }
-            for (let i: number = 0; i < this.cards.length; i++) {
-                let minimum: number = Infinity;
-                let id: number = -1;
-                let current_card: {"title": string, "type": string, "content": any, "color": string};
-                for (let j: number = 0; j < 3; j++) {
-                    if (collumn_data[j] < minimum) {
-                        minimum = collumn_data[j];
-                        id = j;
-                    }
+                let collumn_data: number[] = [];
+                for (let i: number = 0; i < this.cards.length; i++) {
+                    collumn_data.push(0);
                 }
-                current_card = this.cards[i];
-                this.card_table[id].push({
-                    "title": current_card.title,
-                    "type": current_card.type,
-                    "content": current_card.content,
-                    "color": current_card.color,
-                    "id": i
-                });
-                //collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
-                let x: any = document.getElementsByClassName('app_card' + i.toString())[0];
-                collumn_data[id] += 12 + x.offsetHeight;
-            }}, 100);
+                this.card_table = [];
+                for (let i: number = 0; i < this.collumns; i++) {
+                    this.card_table.push([]);
+                }
+                for (let i: number = 0; i < this.cards.length; i++) {
+                    let minimum: number = Infinity;
+                    let id: number = -1;
+                    let current_card: {"title": string, "type": string, "content": any, "color": string};
+                    for (let j: number = 0; j < 3; j++) {
+                        if (collumn_data[j] < minimum) {
+                            minimum = collumn_data[j];
+                            id = j;
+                        }
+                    }
+                    current_card = this.cards[i];
+                    this.card_table[id].push({
+                        "title": current_card.title,
+                        "type": current_card.type,
+                        "content": current_card.content,
+                        "color": current_card.color,
+                        "id": i
+                    });
+                    //collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
+                    let x: any = document.getElementsByClassName('app_card' + i.toString())[0];
+                    collumn_data[id] += 12 + x.offsetHeight;
+                }
+            }, 100);
         } else {
             this.collumns = 1;
         }

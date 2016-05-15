@@ -104,6 +104,7 @@ var CardCollectionComponent = (function () {
         var _this = this;
         var collumn_data = [];
         if (window.matchMedia("(min-width: 8in)").matches) {
+            this.collumns = 3;
             window.setTimeout(function () {
                 var collumn_data = [];
                 for (var i = 0; i < _this.cards.length; i++) {

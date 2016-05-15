@@ -45,7 +45,7 @@ export class CardComponent implements OnInit {
     }
 
     delete() {
-        // console.log("Deleted card " + this.id);
+        console.log("Deleted card " + this.id);
         this.on_delete.emit(null);
     }
 

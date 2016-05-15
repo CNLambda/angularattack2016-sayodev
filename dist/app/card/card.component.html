@@ -6,9 +6,7 @@
         <link-card *ngIf="type == 'link'" [link]="content" [editing]="editing"></link-card>
         <image-card *ngIf="type == 'image'" [link]="content" [editing]="editing"></image-card>
         <file-card *ngIf="type == 'file'" [link]="content" [editing]="editing"></file-card>
-        <!--
-            <canvas-card *ngIf="type == 'canvas'" [data]="content" [editing]="editing"></canvas-card>
-        -->
+        <canvas-card *ngIf="type == 'canvas'" [data]="content" [editing]="editing"></canvas-card>
     </div>
     <div class="card-action">
         <a class="btn-floating waves-effect waves-light blue" (click)="toggle_edit()">
