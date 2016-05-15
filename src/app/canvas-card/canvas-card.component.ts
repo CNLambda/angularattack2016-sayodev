@@ -13,7 +13,7 @@ export class CanvasCardComponent implements OnInit {
     public board_id: string;
       
     constructor(public element: ElementRef) {
-        this.board_id = get_id(window.location.href);
+        this.board_id = this.get_id(window.location.href);
     }
     
     ngOnInit() {

@@ -47,9 +47,6 @@ var SessionService = (function () {
     SessionService.prototype.clear = function () {
         this.setRawObject({});
     };
-    SessionService.prototype.clearBoardUsername = function () {
-        this.setRawObject({});
-    };
     SessionService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
