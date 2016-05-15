@@ -12,7 +12,7 @@ export class ImageCardComponent implements OnInit {
     @Input() editing: boolean;
 
     constructor() {}
-
+      
     ngOnInit() {
     }
 
