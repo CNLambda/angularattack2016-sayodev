@@ -1,5 +1,5 @@
 .d1 {
-    transition: all 1.5s;
+    transition: all 1s;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -8,7 +8,7 @@
 }
 
 .d2 {
-    transition: all 1.5s;
+    transition: all 1s;
     position: fixed;
     top: 0px;
     height: 100%;

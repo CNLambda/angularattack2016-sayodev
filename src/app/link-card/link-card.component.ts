@@ -20,6 +20,9 @@ export class LinkCardComponent implements OnInit {
     constructor(private http: Http) {}
 
     ngOnInit() {
+        if(this.link == null){
+            this.link = "";
+        }
         if (!this.link.split("/")[0].endsWith(":")) {
             this.link = "http://" + this.link;
         }
