@@ -15,6 +15,7 @@ var ChatComponent = (function () {
         this.session = session;
         this.username = "";
         this.id = "";
+        this.messages = []; // {mine: bool, username: str, message: str}
         this.close_chat = new core_1.EventEmitter();
     }
     ChatComponent.prototype.get_id = function (x) {
@@ -31,9 +32,9 @@ var ChatComponent = (function () {
         this.id = this.get_id(window.location.href);
         var ws = new WebSocket("wss://angularattack2016-sayodev.herokuapp.com/message");
         this.ws = ws;
-        var x = this;
+        var this_component = this;
         ws.onopen = function () {
-            ws.send(JSON.stringify({ "username": x.username, "message": "I'm now online.", "board_id": x.id, "join": "true" }));
+            ws.send(JSON.stringify({ "username": this_component.username, "message": "I'm now online.", "board_id": this_component.id, "join": "true" }));
         };
         // Log errors
         ws.onerror = function (error) {
@@ -41,16 +42,27 @@ var ChatComponent = (function () {
         };
         ws.onmessage = function (event) {
             console.log(event);
-            if (event.data.from == this.username) {
+            var data = JSON.parse(event.data);
+            if (data.from == this.username) {
+                data.mine = true;
             }
+            else {
+                data.mine = false;
+            }
+            this_component.messages.push(data);
         };
         ws.onclose = function () {
-            ws.send(JSON.stringify({ "from": x.username, "message": "I'm is going offline.", "board_id": x.id }));
+            ws.send(JSON.stringify({ "from": this_component.username, "message": "I'm is going offline.", "board_id": this_component.id }));
         };
     };
     ChatComponent.prototype.send = function () {
         this.ws.send(JSON.stringify({ 'from': this.username, 'message': this.current_msg, "board_id": this.id }));
         this.current_msg = '';
+    };
+    ChatComponent.prototype.check_send = function (key) {
+        if (key == 13) {
+            this.send();
+        }
     };
     __decorate([
         core_1.Output(), 

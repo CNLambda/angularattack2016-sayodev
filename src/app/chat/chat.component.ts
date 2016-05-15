@@ -14,7 +14,7 @@ export class ChatComponent implements OnInit {
     public current_msg: string;
     public username:string = "";
     public id:string = "";
-    public messages: any[]; // {mine: bool, username: str, message: str}
+    public messages: any[] = []; // {mine: bool, username: str, message: str}
     public ws: WebSocket;
 
     constructor(private session: SessionService) {
@@ -33,9 +33,11 @@ export class ChatComponent implements OnInit {
         this.id = this.get_id(window.location.href);
         var ws = new WebSocket("wss://angularattack2016-sayodev.herokuapp.com/message");
         this.ws = ws;
-        var x = this;
+        
+        var this_component = this;
+        
         ws.onopen = function () {
-              ws.send(JSON.stringify({"username": x.username, "message": "I'm now online.", "board_id": x.id, "join": "true"})); 
+              ws.send(JSON.stringify({"username": this_component.username, "message": "I'm now online.", "board_id": this_component.id, "join": "true"})); 
         };
 
         // Log errors
@@ -45,13 +47,16 @@ export class ChatComponent implements OnInit {
         
         ws.onmessage = function (event) {
             console.log(event);
-            if(event.data.from == this.username){
-                
+            var data = JSON.parse(event.data);
+            if(data.from == this.username){
+                data.mine = true;
+            }else {
+                data.mine = false;
             }
-            
+            this_component.messages.push(data);
         };
         ws.onclose = function() {
-            ws.send(JSON.stringify({"from": x.username, "message": "I'm is going offline.", "board_id": x.id}));
+            ws.send(JSON.stringify({"from": this_component.username, "message": "I'm is going offline.", "board_id": this_component.id}));
         }
         
 
@@ -60,6 +65,12 @@ export class ChatComponent implements OnInit {
     send() {
         this.ws.send(JSON.stringify({'from': this.username, 'message': this.current_msg, "board_id": this.id}));
         this.current_msg='';
+    }
+    
+    check_send(key) {
+        if (key == 13) {
+            this.send();
+        }
     }
 
 }
