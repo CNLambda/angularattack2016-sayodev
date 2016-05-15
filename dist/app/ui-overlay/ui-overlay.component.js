@@ -9,10 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+var http_2 = require('@angular/http');
 var UiOverlayComponent = (function () {
-    function UiOverlayComponent() {
+    function UiOverlayComponent(http) {
+        this.http = http;
         this.toggle_chat = new core_1.EventEmitter();
     }
+    UiOverlayComponent.prototype.createCard = function (type) {
+        console.log("function called...");
+        this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id(location.href) + "/card/create", JSON.stringify({ "type": type }))
+            .subscribe(function (data) {
+            console.log(data.json());
+        }, function (err) { return console.log(err.json().message); }, function () { return console.log('card done...'); });
+    };
+    UiOverlayComponent.prototype.get_id = function (x) {
+        var x2 = x.split("/");
+        if (x2[x2.length - 1] == "") {
+            return x2[x2.length - 2];
+        }
+        else {
+            return x2[x2.length - 1];
+        }
+    };
     UiOverlayComponent.prototype.ngOnInit = function () {
     };
     __decorate([
@@ -24,9 +43,10 @@ var UiOverlayComponent = (function () {
             moduleId: module.id,
             selector: 'ui-overlay',
             templateUrl: 'ui-overlay.component.html',
-            styleUrls: ['ui-overlay.component.css']
+            styleUrls: ['ui-overlay.component.css'],
+            providers: [http_1.HTTP_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_2.Http])
     ], UiOverlayComponent);
     return UiOverlayComponent;
 }());

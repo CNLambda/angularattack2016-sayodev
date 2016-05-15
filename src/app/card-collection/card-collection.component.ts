@@ -26,9 +26,10 @@ export class CardCollectionComponent implements OnInit {
             .subscribe(
                 data => {
                     this.cards = data.json().cards;
+                    console.log("HERE: " + JSON.stringify(this.cards));
                 },
                 err => console.log(err.json().message),
-                () => console.log('Creating Complete')
+                () => console.log('Got info...')
            );
     }
     constructor(private myElement: ElementRef, private http: Http, private session: SessionService) {

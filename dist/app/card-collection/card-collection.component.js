@@ -43,7 +43,8 @@ var CardCollectionComponent = (function () {
         this.data = this.http.get(this.url + this.get_id(location.href) + "/getinfo")
             .subscribe(function (data) {
             _this.cards = data.json().cards;
-        }, function (err) { return console.log(err.json().message); }, function () { return console.log('Creating Complete'); });
+            console.log("HERE: " + JSON.stringify(_this.cards));
+        }, function (err) { return console.log(err.json().message); }, function () { return console.log('Got info...'); });
     };
     CardCollectionComponent.prototype.get_id = function (x) {
         var x2 = x.split("/");

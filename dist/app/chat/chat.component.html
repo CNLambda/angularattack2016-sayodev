@@ -1,6 +1,12 @@
 <div class="card-panel cyan chat">
-    <div class="close"><i class="material-icons"></i></i></div>
-    <div class="messages card-content white">
+    <div class="close" (click)="close_chat.emit(null)">
+        <a alt="close">
+            <i class="material-icons white-text big">
+                close
+            </i>
+        </a>
+    </div>
+    <div class="messages card-content">
         
     </div>
     <div class="card-action mssend">

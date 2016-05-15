@@ -20,7 +20,7 @@ var BoardComponent = (function () {
     BoardComponent.prototype.toggleChat = function () {
         this.chat_opened = !this.chat_opened;
     };
-    BoardComponent.prototype.hideChat = function () {
+    BoardComponent.prototype.closeChat = function () {
         this.chat_opened = false;
     };
     BoardComponent = __decorate([

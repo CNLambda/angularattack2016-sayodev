@@ -11,9 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ChatComponent = (function () {
     function ChatComponent() {
+        this.close_chat = new core_1.EventEmitter();
     }
     ChatComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], ChatComponent.prototype, "close_chat", void 0);
     ChatComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

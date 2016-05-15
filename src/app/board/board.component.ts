@@ -23,7 +23,7 @@ export class BoardComponent implements OnInit {
       this.chat_opened = ! this.chat_opened;
   }
   
-  hideChat() {
+  closeChat() {
       this.chat_opened = false;
   }
 

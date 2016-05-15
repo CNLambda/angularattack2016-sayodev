@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -8,7 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-    constructor() {}
+    @Output() close_chat: EventEmitter<void>;
+
+    constructor() {
+        this.close_chat = new EventEmitter<void>();
+    }
 
     ngOnInit() {
     }

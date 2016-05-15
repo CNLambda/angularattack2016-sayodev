@@ -1,7 +1,7 @@
-<div class="d1" [ngStyle]="{'width': chat_opened? '70%' : '100%'}" (click)="hideChat()">
+<div class="d1" [ngStyle]="{'width': chat_opened? '70%' : '100%'}">
     <card-collection></card-collection>
     <ui-overlay (toggle_chat)="toggleChat()"></ui-overlay>
 </div>
 <div class="d2" [ngStyle]="{'right': chat_opened? '0' : '-110%'}">
-    <chat></chat>
+    <chat (close_chat)="closeChat()"></chat>
 </div>
