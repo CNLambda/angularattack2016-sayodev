@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ImageCardComponent = (function () {
     function ImageCardComponent() {
+        this.on_change = new core_1.EventEmitter();
     }
     ImageCardComponent.prototype.ngOnInit = function () {
     };
@@ -22,6 +23,10 @@ var ImageCardComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Boolean)
     ], ImageCardComponent.prototype, "editing", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], ImageCardComponent.prototype, "on_change", void 0);
     ImageCardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

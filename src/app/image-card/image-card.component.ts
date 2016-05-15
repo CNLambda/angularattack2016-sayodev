@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -10,6 +10,7 @@ export class ImageCardComponent implements OnInit {
 
     @Input() link: string;
     @Input() editing: boolean;
+    @Output() on_change: EventEmitter<string> = new EventEmitter<string>();
 
     constructor() {}
       

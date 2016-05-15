@@ -1,2 +1,2 @@
 <p *ngIf="!editing"> {{text}} </p>
-<textarea [hidden]="!editing" [(ngModel)]="text" class="materialize-textarea"></textarea>
+<textarea [hidden]="!editing" [(ngModel)]="text" class="materialize-textarea" (keypress)="on_change.emit(text)"></textarea>

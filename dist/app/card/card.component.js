@@ -12,8 +12,13 @@ var core_1 = require('@angular/core');
 var text_card_1 = require('../text-card');
 var link_card_1 = require('../link-card');
 var image_card_1 = require('../image-card');
+var file_card_1 = require('../file-card');
+var http_1 = require('@angular/http');
+var http_2 = require('@angular/http');
+//import { CanvasCardComponent } from '../canvas-card';
 var CardComponent = (function () {
-    function CardComponent() {
+    function CardComponent(http) {
+        this.http = http;
         this.on_delete = new core_1.EventEmitter();
         this.title = '';
         this.type = 'text';
@@ -29,9 +34,20 @@ var CardComponent = (function () {
     };
     CardComponent.prototype.changeColor = function (new_color) {
         this.color = new_color;
+        this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id() + "/card/" + this.data.server_id + "/edit", JSON.stringify({ title: this.title, content: this.content, color: this.color }))
+            .subscribe(function (data) {
+        }, function (err) { return console.log(err.json().message); }, function () { return console.log('card done...'); });
+    };
+    CardComponent.prototype.on_change = function (content) {
+        this.content = content;
     };
     CardComponent.prototype.toggle_edit = function () {
         this.editing = !this.editing;
+        if (!this.editing) {
+            this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id() + "/card/" + this.data.server_id + "/edit", JSON.stringify({ title: this.title, content: this.content, color: this.color }))
+                .subscribe(function (data) {
+            }, function (err) { return console.log(err.json().message); }, function () { return console.log('card done...'); });
+        }
     };
     CardComponent.prototype.get_id = function () {
         var x = location.href;
@@ -45,7 +61,22 @@ var CardComponent = (function () {
     };
     CardComponent.prototype.delete = function () {
         console.log("Deleted card " + this.data.server_id);
+        this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id() + "/card/" + this.data.server_id + "/delete", JSON.stringify({}))
+            .subscribe(function (data) {
+        }, function (err) { return console.log(err.json().message); }, function () { return console.log('card done...'); });
         this.on_delete.emit(null);
+    };
+    CardComponent.prototype.up = function () {
+        console.log("Priority up: " + this.data.server_id);
+        this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id() + "/card/" + this.data.server_id + "/up", JSON.stringify({}))
+            .subscribe(function (data) {
+        }, function (err) { return console.log(err.json().message); }, function () { return console.log('card done...'); });
+    };
+    CardComponent.prototype.down = function () {
+        console.log("Priority up: " + this.data.server_id);
+        this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id() + "/card/" + this.data.server_id + "/down", JSON.stringify({}))
+            .subscribe(function (data) {
+        }, function (err) { return console.log(err.json().message); }, function () { return console.log('card done...'); });
     };
     __decorate([
         core_1.Input(), 
@@ -65,9 +96,10 @@ var CardComponent = (function () {
             selector: 'card',
             templateUrl: 'card.component.html',
             styleUrls: ['card.component.css'],
-            directives: [text_card_1.TextCardComponent, link_card_1.LinkCardComponent, image_card_1.ImageCardComponent]
+            directives: [text_card_1.TextCardComponent, link_card_1.LinkCardComponent, image_card_1.ImageCardComponent, file_card_1.FileCardComponent],
+            providers: [http_1.HTTP_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_2.Http])
     ], CardComponent);
     return CardComponent;
 }());

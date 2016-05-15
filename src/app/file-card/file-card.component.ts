@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -8,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileCardComponent implements OnInit {
 
-  constructor() {}
-
-  ngOnInit() {
-  }
+    @Input() link: string;
+    @Input() editing: boolean;
+    @Output() on_change: EventEmitter<string> = new EventEmitter<string>();
+  
+    constructor() {}
+  
+    ngOnInit() {
+    }
 
 }

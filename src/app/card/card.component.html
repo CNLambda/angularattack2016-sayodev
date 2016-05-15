@@ -1,12 +1,12 @@
 <div class="card {{color}} lighten-2">
-    <div class="{{type == 'image'? 'card-image' : 'card-content'}}">
+    <div class="card-content">
         <span *ngIf="(title != '') && !editing" class="card-title" style="z-index:1;">{{title}}</span>
         <input [hidden]="!editing" [(ngModel)]="title" class="card-title" style="z-index:1;" />
-        <text-card *ngIf="type == 'text'" [text]="content" [editing]="editing"></text-card>
-        <link-card *ngIf="type == 'link'" [link]="content" [editing]="editing"></link-card>
-        <image-card *ngIf="type == 'image'" [link]="content" [editing]="editing"></image-card>
-        <file-card *ngIf="type == 'file'" [link]="content" [editing]="editing"></file-card>
-        <canvas-card *ngIf="type == 'canvas'" [data]="content" [editing]="editing"></canvas-card>
+        <text-card *ngIf="type == 'text'" [text]="content" [editing]="editing" (on_change)="on_change($event)"></text-card>
+        <link-card *ngIf="type == 'link'" [link]="content" [editing]="editing" (on_change)="on_change($event)"></link-card>
+        <image-card *ngIf="type == 'image'" [link]="content" [editing]="editing" (on_change)="on_change($event)"></image-card>
+        <file-card *ngIf="type == 'file'" [link]="content" [editing]="editing" (on_change)="on_change($event)"></file-card>
+        <!--<canvas-card *ngIf="type == 'canvas'" [data]="content" [editing]="editing"></canvas-card>-->
     </div>
     <div class="card-action">
         <a class="btn-floating waves-effect waves-light blue" (click)="toggle_edit()">
@@ -14,6 +14,12 @@
         </a>
         <a class="btn-floating waves-effect waves-light blue" (click)="delete()">
             <i class="material-icons">delete</i>
+        </a>
+        <a class="btn-floating waves-effect waves-light blue" (click)="up()">
+            <i class="material-icons">keyboard_arrow_up</i>
+        </a>
+        <a class="btn-floating waves-effect waves-light blue" (click)="down()">
+            <i class="material-icons">keyboard_arrow_down</i>
         </a>
         <div class="fixed-action-btn horizontal" style="position: relative; float: right; margin-top: 1.5em; margin-right: -1.5em;">
             <a class="btn-floating blue">
