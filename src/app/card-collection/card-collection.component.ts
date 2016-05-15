@@ -29,7 +29,7 @@ export class CardCollectionComponent implements OnInit {
                 () => console.log('Creating Complete')
            );
 
-        this.cards = [
+        /* this.cards = [
             {"title": "Text!","type": "text","content": "Card Nr. 1","color":"white"},
             {"title": "Lorem Ipsum Text!","type": "text","content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","color":"white"},
             {"title": "This is Google.","type": "link","content": "http://www.google.de","color":"white"},
@@ -38,7 +38,7 @@ export class CardCollectionComponent implements OnInit {
             {"title": "It will happen at some point.","type": "text","content": "...","color":"white"},
             {"title": "Look at those colors!","type": "text","content": "...","color":"white"},
             {"title": "BrainShare","type": "text","content": "is cool.","color":"green"}
-        ];
+        ]; */
         this.collumns = 1;
         this.element = myElement;
     }
