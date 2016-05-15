@@ -22,7 +22,7 @@ export class CardCollectionComponent implements OnInit {
     constructor(myElement: ElementRef, private http: Http) {
         this.cards = [];
         
-        this.data = this.http.get(this.url + "A1B242/getinfo")
+        this.data = this.http.get(this.url + this.get_id(window.location.href) + "/getinfo")
             .subscribe(
                 data => {
                     this.cards = data.json().cards;
@@ -43,6 +43,15 @@ export class CardCollectionComponent implements OnInit {
         ]; */
         this.collumns = 1;
         this.element = myElement;
+    }
+    
+    getId(x: string) : string {
+        x = x.split("/")
+        if (x[x.length - 1] == "") {
+            return x[x.length - 2];
+        } else {
+            return x[x.length - 1]
+        }
     }
 
     ngOnInit() {
