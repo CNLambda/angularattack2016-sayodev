@@ -13,7 +13,6 @@ var session_service_1 = require('../session.service');
 var ChatComponent = (function () {
     function ChatComponent(session) {
         this.session = session;
-        this.username = "";
         this.id = "";
         this.messages = []; // {mine: bool, username: str, message: str}
         this.close_chat = new core_1.EventEmitter();
@@ -43,12 +42,16 @@ var ChatComponent = (function () {
         ws.onmessage = function (event) {
             console.log(event);
             var data = JSON.parse(event.data);
-            if (data.from == this.username) {
+            if (data.from == undefined) {
+                data.from = data.username;
+            }
+            if (data.from == this_component.username) {
                 data.mine = true;
             }
             else {
                 data.mine = false;
             }
+            console.log(data);
             this_component.messages.push(data);
         };
         ws.onclose = function () {

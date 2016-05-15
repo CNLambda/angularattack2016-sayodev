@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SessionService } from '../session.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class ChatComponent implements OnInit {
     @Output() close_chat: EventEmitter<void>;
     
     public current_msg: string;
-    public username:string = "";
+    public username: string;
     public id:string = "";
     public messages: any[] = []; // {mine: bool, username: str, message: str}
     public ws: WebSocket;
@@ -48,11 +48,15 @@ export class ChatComponent implements OnInit {
         ws.onmessage = function (event) {
             console.log(event);
             var data = JSON.parse(event.data);
-            if(data.from == this.username){
+            if(data.from == undefined) {
+                data.from = data.username;
+            }
+            if(data.from == this_component.username){
                 data.mine = true;
             }else {
                 data.mine = false;
             }
+            console.log(data);
             this_component.messages.push(data);
         };
         ws.onclose = function() {
