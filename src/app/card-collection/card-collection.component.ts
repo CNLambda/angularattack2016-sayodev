@@ -37,7 +37,7 @@ export class CardCollectionComponent implements OnInit {
         
         setInterval(() => {
             this.getInfo();
-        }, 1000);
+        }, 500);
 
         /* this.cards = [
             {"title": "Text!","type": "text","content": "Card Nr. 1","color":"white"},

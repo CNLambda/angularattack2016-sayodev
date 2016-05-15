@@ -12,5 +12,19 @@
     top:0;
 }
 .big{
-    font-size: 30pt;
+    font-size: 20pt;
+}
+.msg{
+    padding:10px !important;
+    width:80%;
+    float:left;
+}
+.mine{
+    float:right;
+}
+.msg .sender{
+    color:#AAA;
+}
+messages{
+    margin-top:1em;
 }
