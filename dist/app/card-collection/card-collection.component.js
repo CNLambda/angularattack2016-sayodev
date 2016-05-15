@@ -9,13 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var session_service_1 = require('../session.service');
 var card_1 = require('../card');
 var http_1 = require('@angular/http');
 var http_2 = require('@angular/http');
 var CardCollectionComponent = (function () {
-    function CardCollectionComponent(myElement, http) {
+    function CardCollectionComponent(myElement, http, session) {
+        this.myElement = myElement;
         this.http = http;
+        this.session = session;
         this.url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
+        this.name = "undefined";
         this.cards = [];
         this.getInfo();
         /* this.cards = [
@@ -46,6 +50,14 @@ var CardCollectionComponent = (function () {
         else {
             return x2[x2.length - 1];
         }
+    };
+    CardCollectionComponent.prototype.setName = function () {
+        if (this.name == "undefined" || this.name == "") {
+            return;
+        }
+        this.session.setBoardUsername(this.get_id(location.href), this.name);
+        var x = this.element.nativeElement.querySelector('.del');
+        x.parentNode.removeChild(x);
     };
     CardCollectionComponent.prototype.ngOnInit = function () {
         var this_component = this;
@@ -132,9 +144,9 @@ var CardCollectionComponent = (function () {
             templateUrl: 'card-collection.component.html',
             styleUrls: ['card-collection.component.css'],
             directives: [card_1.CardComponent],
-            providers: [http_1.HTTP_PROVIDERS]
+            providers: [http_1.HTTP_PROVIDERS, session_service_1.SessionService]
         }), 
-        __metadata('design:paramtypes', [core_1.ElementRef, http_2.Http])
+        __metadata('design:paramtypes', [core_1.ElementRef, http_2.Http, session_service_1.SessionService])
     ], CardCollectionComponent);
     return CardCollectionComponent;
 }());

@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { SessionService } from '../session.service';
 import { CardComponent } from '../card';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { Http, Response} from '@angular/http';
@@ -9,7 +10,7 @@ import { Http, Response} from '@angular/http';
   templateUrl: 'card-collection.component.html',
   styleUrls: ['card-collection.component.css'],
   directives: [CardComponent],
-  providers:  [ HTTP_PROVIDERS ]
+  providers:  [ HTTP_PROVIDERS, SessionService ]
 })
 export class CardCollectionComponent implements OnInit {
 
@@ -19,6 +20,7 @@ export class CardCollectionComponent implements OnInit {
     public element: ElementRef;
     private url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
     private data;
+    private name = "undefined";
     private getInfo(){
         this.data = this.http.get(this.url + this.get_id(location.href) + "/getinfo")
             .subscribe(
@@ -29,7 +31,7 @@ export class CardCollectionComponent implements OnInit {
                 () => console.log('Creating Complete')
            );
     }
-    constructor(myElement: ElementRef, private http: Http) {
+    constructor(private myElement: ElementRef, private http: Http, private session: SessionService) {
         this.cards = [];
         
         this.getInfo();
@@ -56,7 +58,14 @@ export class CardCollectionComponent implements OnInit {
             return x2[x2.length - 1];
         }
     }
-
+    setName(){
+        if(this.name == "undefined" ||  this.name == ""){
+         return;   
+        }
+        this.session.setBoardUsername(this.get_id(location.href), this.name); 
+        let x: any = this.element.nativeElement.querySelector('.del');
+        x.parentNode.removeChild(x);
+    }
     ngOnInit() {
         let this_component: CardCollectionComponent = this;
         let rtime: number;

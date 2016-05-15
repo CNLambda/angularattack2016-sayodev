@@ -31,7 +31,7 @@ var CanvasCardComponent = (function () {
     ], CanvasCardComponent.prototype, "editing", void 0);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Array)
+        __metadata('design:type', Object)
     ], CanvasCardComponent.prototype, "data", void 0);
     CanvasCardComponent = __decorate([
         core_1.Component({

@@ -9,7 +9,7 @@ import { Component, OnInit, Input, ElementRef } from '@angular/core';
 export class CanvasCardComponent implements OnInit {
     
     @Input() editing: boolean;
-    @Input() data: {"type": string, "data": number[]}[];
+    @Input() data: any;
     public board_id: string;
       
     constructor(public element: ElementRef) {
