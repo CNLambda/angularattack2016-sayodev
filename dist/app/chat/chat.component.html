@@ -7,7 +7,7 @@
         </a>
     </div>
     <div class="messages card-content">
-        <div class="card-panel msg white-text mine">
+        <!--<div class="card-panel msg white-text mine">
             <span class="sender">@jos</span>
             <span class="text">Hi!</span>
         </div>
@@ -29,5 +29,8 @@
           <input id="sendmsg" type="text" class="validate">
           <label for="sendmsg">Message</label>
         </div>
+    </div>-->
+    <div *ngFor="let msg in messages" class="card-panel msg white-text{{msg.mine? ' mine' : ''}}">
+        
     </div>
 </div>
