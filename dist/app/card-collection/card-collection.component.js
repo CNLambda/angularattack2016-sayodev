@@ -26,6 +26,7 @@ var CardCollectionComponent = (function () {
         this.myElement = myElement;
         this.http = http;
         this.session = session;
+        this.username_supplied = new core_1.EventEmitter();
         this.url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
         this.name = "";
         this.cards = [];
@@ -72,7 +73,7 @@ var CardCollectionComponent = (function () {
                 _this.cards = new_;
                 _this.reorderCards();
             }
-        }, function (err) { return console.log(err.json().message); }, function () { return console.log('Got info...'); });
+        }, function (err) { return console.log(err.json().message); });
     };
     CardCollectionComponent.prototype.get_id = function (x) {
         var x2 = x.split("/");
@@ -90,6 +91,7 @@ var CardCollectionComponent = (function () {
         this.session.setBoardUsername(this.get_id(location.href), this.name);
         var x = this.element.nativeElement.querySelector('.del');
         x.parentNode.removeChild(x);
+        this.username_supplied.emit(null);
     };
     CardCollectionComponent.prototype.ngOnInit = function () {
         var this_component = this;
@@ -117,6 +119,9 @@ var CardCollectionComponent = (function () {
             }
         }
         this.reorderCards();
+        if (this.session.getBoardUsername(this.get_id(location.href)) != undefined) {
+            this.username_supplied.emit(null);
+        }
     };
     CardCollectionComponent.prototype.reorderCards = function () {
         var _this = this;
@@ -165,6 +170,10 @@ var CardCollectionComponent = (function () {
         this.cards.splice(index, 1);
         this.reorderCards();
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], CardCollectionComponent.prototype, "username_supplied", void 0);
     CardCollectionComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

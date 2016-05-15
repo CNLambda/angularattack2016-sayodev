@@ -9,14 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var session_service_1 = require('../session.service');
 var ChatComponent = (function () {
-    function ChatComponent() {
+    function ChatComponent(session) {
+        this.session = session;
+        this.username = "";
+        this.id = "";
         this.close_chat = new core_1.EventEmitter();
     }
+    ChatComponent.prototype.get_id = function (x) {
+        var x2 = x.split("/");
+        if (x2[x2.length - 1] == "") {
+            return x2[x2.length - 2];
+        }
+        else {
+            return x2[x2.length - 1];
+        }
+    };
     ChatComponent.prototype.ngOnInit = function () {
-        var ws = new WebSocket("wss://angularattack2016-sayodev.herokuapp.com");
+        this.username = this.session.getBoardUsername(this.get_id(window.location.href));
+        this.id = this.get_id(window.location.href);
+        var ws = new WebSocket("wss://angularattack2016-sayodev.herokuapp.com/message");
+        this.ws = ws;
+        var x = this;
         ws.onopen = function () {
-            ws.send('{}'); // Send the message 'Ping' to the server
+            ws.send(JSON.stringify({ "username": x.username, "message": "I'm now online.", "board_id": x.id, "join": "true" }));
         };
         // Log errors
         ws.onerror = function (error) {
@@ -24,8 +41,16 @@ var ChatComponent = (function () {
         };
         ws.onmessage = function (event) {
             console.log(event);
-            // TODO add message
+            if (event.data.from == this.username) {
+            }
         };
+        ws.onclose = function () {
+            ws.send(JSON.stringify({ "from": x.username, "message": "I'm is going offline.", "board_id": x.id }));
+        };
+    };
+    ChatComponent.prototype.send = function () {
+        this.ws.send(JSON.stringify({ 'from': this.username, 'message': this.current_msg, "board_id": this.id }));
+        this.current_msg = '';
     };
     __decorate([
         core_1.Output(), 
@@ -38,7 +63,7 @@ var ChatComponent = (function () {
             templateUrl: 'chat.component.html',
             styleUrls: ['chat.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [session_service_1.SessionService])
     ], ChatComponent);
     return ChatComponent;
 }());

@@ -12,7 +12,8 @@ import { ChatComponent } from '../chat';
 })
 export class BoardComponent implements OnInit {
 
-  public chat_opened: boolean;
+  public chat_opened: boolean = false;
+  public username_supplied: boolean = false;
 
   constructor() {}
 

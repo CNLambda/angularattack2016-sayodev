@@ -1,7 +1,7 @@
 <div class="d1" [ngStyle]="{'width': chat_opened? '70%' : '100%'}">
-    <card-collection></card-collection>
+    <card-collection (username_supplied)="username_supplied = true"></card-collection>
     <ui-overlay (toggle_chat)="toggleChat()"></ui-overlay>
 </div>
 <div class="d2" [ngStyle]="{'right': chat_opened? '0' : '-110%'}">
-    <chat (close_chat)="closeChat()"></chat>
+    <chat (close_chat)="closeChat()" *ngIf="username_supplied"></chat>
 </div>

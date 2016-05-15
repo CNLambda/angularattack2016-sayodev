@@ -30,17 +30,18 @@
           <label for="sendmsg">Message</label>
         </div>
     </div>-->
-    <div *ngFor="let msg of messages" class="card-panel msg white-text{{msg.mine? ' mine' : ''}}">
-        <span class="sender">{{msg.from}}</span>
-        <span class="text">{{msg.message}}</span>
+        <div *ngFor="let msg of messages" class="card-panel msg white-text{{msg.mine? ' mine' : ''}}">
+            <span class="sender">{{msg.from}}</span>
+            <span class="text">{{msg.message}}</span>
+        </div>
     </div>
     <div class="card-action mssend">
+        <a (click)="send()" class="btn-floating waves-effect waves-light green btn-large" style="float: right;">
+            <i class="material-icons white-text">call_made</i>
+        </a><br>
         <div class="input-field col s8">
-            <input id="sendmsg" type="text" class="validate">
+            <input id="sendmsg" [(ngModel)]="current_msg" type="text" class="validate">
             <label for="sendmsg">Message</label>
         </div>
-        <a (click)="send(current_msg)" style="btn-floating waves-effect waves-light green">
-            <i style="material-icons white-text">call_made</i>
-        </a>
     </div>
 </div>

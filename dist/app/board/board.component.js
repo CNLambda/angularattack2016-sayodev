@@ -14,6 +14,8 @@ var ui_overlay_1 = require('../ui-overlay');
 var chat_1 = require('../chat');
 var BoardComponent = (function () {
     function BoardComponent() {
+        this.chat_opened = false;
+        this.username_supplied = false;
     }
     BoardComponent.prototype.ngOnInit = function () {
     };

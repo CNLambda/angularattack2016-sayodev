@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
 import { SessionService } from '../session.service';
 import { CardComponent } from '../card';
 import { HTTP_PROVIDERS } from '@angular/http';
@@ -24,6 +24,7 @@ export class CardCollectionComponent implements OnInit {
     public card_table: any;
     public collumns: number;
     public element: ElementRef;
+    @Output() username_supplied: EventEmitter<void> = new EventEmitter<void>();
     private url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
     private data;
     private name = "";
@@ -55,8 +56,7 @@ export class CardCollectionComponent implements OnInit {
                         this.reorderCards();
                     }
                 },
-                err => console.log(err.json().message),
-                () => console.log('Got info...')
+                err => console.log(err.json().message)
            );
     }
     constructor(private myElement: ElementRef, private http: Http, private session: SessionService) {
@@ -95,6 +95,7 @@ export class CardCollectionComponent implements OnInit {
         this.session.setBoardUsername(this.get_id(location.href), this.name); 
         let x: any = this.element.nativeElement.querySelector('.del');
         x.parentNode.removeChild(x);
+        this.username_supplied.emit(null);
     }
     ngOnInit() {
         let this_component: CardCollectionComponent = this;
@@ -123,6 +124,10 @@ export class CardCollectionComponent implements OnInit {
         }
 
         this.reorderCards();
+        
+        if (this.session.getBoardUsername(this.get_id(location.href)) != undefined) {
+            this.username_supplied.emit(null);
+        }
     }
 
     reorderCards() {
