@@ -1,8 +1,8 @@
 .loader{
     position: fixed;
     left: 50%; top: 50%;
-    width: 180px;
-    height: 180px;
+    width: 180px !important;
+    height: 180px !important;
     margin: -90px 0 0 -90px;
 }
 .loaddiv{
