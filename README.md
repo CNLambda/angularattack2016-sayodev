@@ -1,48 +1,16 @@
-# This is your [AngularAttack](https://www.angularattack.com) 2016 Repo
+# Welcome to Brainshare
 
-This repo is the start of your AngularAttack 2016 entry. It contains the simple [Angular2 starter](https://angular.io/docs/ts/latest/quickstart.html) files.
+This is a project by SayoDev, a team of 13 till 16 years old students from Germany.
 
-**DO NOT MAKE ANY CODE CHECKINS TO THIS REPOSITORY BEFORE THE COMPETITION OFFICIALLY BEGINS.**
+We built the frontend with Angular 2, hosted by Surge, and the backend with Node.js and PostgreSQL, hosted by Heroku for free. (access to backend on request)
 
-**DOING SO COULD DISQUALIFY YOU.**
+## Description
 
+Share your thoughts and ideas with colleagues all over the world in realtime. No matter, where you are or what your 'meeting' is about. Give it a shot - raise brainstorming to the next level by creating a new board with brainshare!
 
-However, before the competition starts, there are some things we encourage you to do to get prepared for the competition.
+## Instructions
 
-
-### Step 1) Get Your Local Environment setup
-
-Clone this repo locally, and make sure all your team members have access to it.
-
-* Install the latest [Node / NPM](https://nodejs.org).
-
-* `git clone git@github.com:rumblex/angularattack2016-sayodev.git`
-
-* `cd angularattack2016-sayodev`
-
-* `npm install`
-
-* `npm start` will start the server locally to test that everything is running correctly
-
-
-### Step 2) Deploy Your App
-
-While you can't make any checkins before the comp, what you **can** do right now is deploy this sample app to [Surge](https://surge.sh) (our competition hosting provider).
-
-* `npm install -g surge`
-
-* `surge .`
-
-Note: please do not remove the `CNAME` file, as that tells it where to deploy to.
-
-If you receive an error message `"You do not have permission to publish to sayodev.2016.angularattack.io"`, it might mean another team member has already deployed your project to Surge. Ask them to run the next step to give you access.
-
-### Step 3) Add Your Team Members to Surge
-
-* `surge . --add doris-books@dorimara.de,jos.torge@web.de,elias@sayodev.de`
-
-
-### Step 4) Wait til competition starts
-
-It begins at exactly [May 14 at 00:00 UTC](https://www.wolframalpha.com/input/?i=May+14,+2016+0:00+UTC). Once the competition starts,   you can write over this project.
-
+1. Visit our start page.
+2. Create a new board.
+3. Create new entries on your board.
+4. Share the link with your friends and work together. (you'll be also able to chat with each other)
