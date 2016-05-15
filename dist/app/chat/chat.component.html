@@ -35,9 +35,12 @@
         <span class="text">{{msg.message}}</span>
     </div>
     <div class="card-action mssend">
-        <div class="input-field col s6">
+        <div class="input-field col s8">
             <input id="sendmsg" type="text" class="validate">
             <label for="sendmsg">Message</label>
         </div>
+        <a (click)="send(current_msg)" style="btn-floating waves-effect waves-light green">
+            <i style="material-icons white-text">send</i>
+        </a>
     </div>
 </div>

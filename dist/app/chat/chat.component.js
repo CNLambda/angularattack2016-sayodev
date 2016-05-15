@@ -16,7 +16,7 @@ var ChatComponent = (function () {
     ChatComponent.prototype.ngOnInit = function () {
         var ws = new WebSocket("wss://angularattack2016-sayodev.herokuapp.com");
         ws.onopen = function () {
-            ws.send('Ping'); // Send the message 'Ping' to the server
+            ws.send('{}'); // Send the message 'Ping' to the server
         };
         // Log errors
         ws.onerror = function (error) {
@@ -24,6 +24,7 @@ var ChatComponent = (function () {
         };
         ws.onmessage = function (event) {
             console.log(event);
+            // TODO add message
         };
     };
     __decorate([

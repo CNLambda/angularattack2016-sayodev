@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { SessionService } from '../session.service';
 
 @Component({
   moduleId: module.id,
@@ -20,7 +20,7 @@ export class ChatComponent implements OnInit {
     ngOnInit() {
         var ws = new WebSocket("wss://angularattack2016-sayodev.herokuapp.com");
         ws.onopen = function () {
-            ws.send('Ping'); // Send the message 'Ping' to the server
+            ws.send('{"from": "'++'"}'); // Send the message 'Ping' to the server
         };
 
         // Log errors
@@ -30,6 +30,7 @@ export class ChatComponent implements OnInit {
         
         ws.onmessage = function (event) {
             console.log(event);
+            // TODO add message
         };
         
 
