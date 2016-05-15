@@ -31,6 +31,12 @@ export class SessionService {
     obj["username"] = username;
     this.setValue(boardId, obj);
   }
+  public clear(){
+    this.setRawObject({});
+  }
+  public clearBoardUsername(){
+    this.setRawObject({});
+  }
   constructor() {
     if(this.getRawObject() == null){
       this.setRawObject({});

@@ -19,10 +19,8 @@ export class CardCollectionComponent implements OnInit {
     public element: ElementRef;
     private url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
     private data;
-    constructor(myElement: ElementRef, private http: Http) {
-        this.cards = [];
-        
-        this.data = this.http.get(this.url + this.get_id(window.location.href) + "/getinfo")
+    private getInfo(){
+        this.data = this.http.get(this.url + this.get_id(location.href) + "/getinfo")
             .subscribe(
                 data => {
                     this.cards = data.json().cards;
@@ -30,6 +28,11 @@ export class CardCollectionComponent implements OnInit {
                 err => console.log(err.json().message),
                 () => console.log('Creating Complete')
            );
+    }
+    constructor(myElement: ElementRef, private http: Http) {
+        this.cards = [];
+        
+        this.getInfo();
 
         /* this.cards = [
             {"title": "Text!","type": "text","content": "Card Nr. 1","color":"white"},
@@ -45,12 +48,12 @@ export class CardCollectionComponent implements OnInit {
         this.element = myElement;
     }
     
-    getId(x: string) : string {
-        x = x.split("/")
-        if (x[x.length - 1] == "") {
-            return x[x.length - 2];
+    get_id(x: string) : string {
+        let x2: string[] = x.split("/");
+        if (x2[x2.length - 1] == "") {
+            return x2[x2.length - 2];
         } else {
-            return x[x.length - 1]
+            return x2[x2.length - 1];
         }
     }
 

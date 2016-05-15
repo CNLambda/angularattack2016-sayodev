@@ -14,14 +14,10 @@ var http_1 = require('@angular/http');
 var http_2 = require('@angular/http');
 var CardCollectionComponent = (function () {
     function CardCollectionComponent(myElement, http) {
-        var _this = this;
         this.http = http;
         this.url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
         this.cards = [];
-        this.data = this.http.get(this.url + "A1B242/getinfo")
-            .subscribe(function (data) {
-            _this.cards = data.json().cards;
-        }, function (err) { return console.log(err.json().message); }, function () { return console.log('Creating Complete'); });
+        this.getInfo();
         /* this.cards = [
             {"title": "Text!","type": "text","content": "Card Nr. 1","color":"white"},
             {"title": "Lorem Ipsum Text!","type": "text","content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","color":"white"},
@@ -35,6 +31,22 @@ var CardCollectionComponent = (function () {
         this.collumns = 1;
         this.element = myElement;
     }
+    CardCollectionComponent.prototype.getInfo = function () {
+        var _this = this;
+        this.data = this.http.get(this.url + this.get_id(location.href) + "/getinfo")
+            .subscribe(function (data) {
+            _this.cards = data.json().cards;
+        }, function (err) { return console.log(err.json().message); }, function () { return console.log('Creating Complete'); });
+    };
+    CardCollectionComponent.prototype.get_id = function (x) {
+        var x2 = x.split("/");
+        if (x2[x2.length - 1] == "") {
+            return x2[x2.length - 2];
+        }
+        else {
+            return x2[x2.length - 1];
+        }
+    };
     CardCollectionComponent.prototype.ngOnInit = function () {
         var this_component = this;
         var rtime;
