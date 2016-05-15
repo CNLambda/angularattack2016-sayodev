@@ -15,6 +15,9 @@ export class CanvasCardComponent implements OnInit {
     constructor(public element: ElementRef) {
         this.board_id = get_id(window.location.href);
     }
+    
+    ngOnInit() {
+    }
   
     get_id(x: string) : string {
         let x2: string[] = x.split("/");

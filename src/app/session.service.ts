@@ -34,9 +34,6 @@ export class SessionService {
   public clear(){
     this.setRawObject({});
   }
-  public clearBoardUsername(){
-    this.setRawObject({});
-  }
   constructor() {
     if(this.getRawObject() == null){
       this.setRawObject({});
