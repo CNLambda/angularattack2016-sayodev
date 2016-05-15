@@ -25,13 +25,13 @@ export class Angularattack2016SayodevAppComponent implements OnInit {
     }
 
     ngOnInit() {
-        /*if(window.location.href.indexOf("#") > -1) {
+        if(window.location.href.indexOf("#") > -1) {
             this.router.navigate(['/board/' + window.location.href.split("#")[1]]);
         } else if (window.location.href.indexOf('board') > -1 ) {
         } else {
             this.router.navigate(['/home']);
-        }*/
-        // this.router.navigate(['/home']);
+        }
+        //this.router.navigate(['/home']);
     }
 
 }

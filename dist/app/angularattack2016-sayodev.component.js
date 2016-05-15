@@ -21,13 +21,15 @@ var Angularattack2016SayodevAppComponent = (function () {
         this.session.setBoardUsername("abc", "jonas");
     }
     Angularattack2016SayodevAppComponent.prototype.ngOnInit = function () {
-        /*if(window.location.href.indexOf("#") > -1) {
+        if (window.location.href.indexOf("#") > -1) {
             this.router.navigate(['/board/' + window.location.href.split("#")[1]]);
-        } else if (window.location.href.indexOf('board') > -1 ) {
-        } else {
+        }
+        else if (window.location.href.indexOf('board') > -1) {
+        }
+        else {
             this.router.navigate(['/home']);
-        }*/
-        // this.router.navigate(['/home']);
+        }
+        //this.router.navigate(['/home']);
     };
     Angularattack2016SayodevAppComponent = __decorate([
         core_1.Component({
