@@ -15,4 +15,8 @@ powered by Heroku, Node.js and PostgreSQL.
 
 /board/{board_id}/card/{card_id}/delete **POST** - delete card
 
+## WebSocket API
+/ - echo test
+/message - send your chat message
+
 
