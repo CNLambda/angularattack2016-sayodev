@@ -12,9 +12,10 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 export class UiOverlayComponent implements OnInit {
 
     @Output() toggle_chat: EventEmitter<void> = new EventEmitter<void>();
-  
+    
     constructor(private http: Http) {}
-  
+    public sharelink:string = "";
+    public hideLink:boolean = true;
     private createCard(type: string){
         console.log("function called...");
       this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id(location.href) + "/card/create", JSON.stringify({"type": type, "title": "new card", "content": ""}))
@@ -36,6 +37,15 @@ export class UiOverlayComponent implements OnInit {
     }
   
     ngOnInit() {
+    }
+    
+    share(){
+        var to_share = "https://sayodev.2016.angularattack.io/#" + this.get_id(window.location.href);
+        this.hideLink = false;
+        this.sharelink = to_share;
+        setTimeout(()=>{
+            this.hideLink = true;
+        }, 10 * 1000);
     }
 
 }

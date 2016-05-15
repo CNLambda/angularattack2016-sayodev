@@ -34,3 +34,8 @@
 <div class="btn-floating btn-large waves-effect waves-light cyan" style="position:fixed; bottom:45px; right:96px; z-index:9999;" (click)="toggle_chat.emit(null)">
       <i class="material-icons">chat</i>
 </div>
+<div class="btn-floating btn-large waves-effect waves-light red" style="position:fixed; bottom:45px; right:168px; z-index:9999;" (click)="share()">
+      <i class="material-icons">share</i>
+</div>
+
+<div class="notification grey darken-3 white-text card-panel activesharelink" [hidden]="hideLink">{{sharelink}} </div>

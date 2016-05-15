@@ -1,0 +1,15 @@
+.notification{
+    position:absolute;
+    top:-10em;
+    height:2em;
+    width:30em;
+    text-align:center;
+    vertical-align:middle;
+    left:50%;
+    margin-left: -15em;
+    padding:1px !important;
+    transition: all 1s;
+}
+.activesharelink{
+    top:1em;
+}

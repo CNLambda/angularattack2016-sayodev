@@ -15,6 +15,8 @@ var UiOverlayComponent = (function () {
     function UiOverlayComponent(http) {
         this.http = http;
         this.toggle_chat = new core_1.EventEmitter();
+        this.sharelink = "";
+        this.hideLink = true;
     }
     UiOverlayComponent.prototype.createCard = function (type) {
         console.log("function called...");
@@ -32,6 +34,15 @@ var UiOverlayComponent = (function () {
         }
     };
     UiOverlayComponent.prototype.ngOnInit = function () {
+    };
+    UiOverlayComponent.prototype.share = function () {
+        var _this = this;
+        var to_share = "https://sayodev.2016.angularattack.io/#" + this.get_id(window.location.href);
+        this.hideLink = false;
+        this.sharelink = to_share;
+        setTimeout(function () {
+            _this.hideLink = true;
+        }, 10 * 1000);
     };
     __decorate([
         core_1.Output(), 
