@@ -20,6 +20,8 @@ export class CardCollectionComponent implements OnInit {
     private url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
     private data;
     constructor(myElement: ElementRef, private http: Http) {
+        this.cards = [];
+        
         this.data = this.http.get(this.url + "A1B242/getinfo")
             .subscribe(
                 data => {

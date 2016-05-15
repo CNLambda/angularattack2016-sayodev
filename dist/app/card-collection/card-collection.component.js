@@ -17,6 +17,7 @@ var CardCollectionComponent = (function () {
         var _this = this;
         this.http = http;
         this.url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
+        this.cards = [];
         this.data = this.http.get(this.url + "A1B242/getinfo")
             .subscribe(function (data) {
             _this.cards = data.json().cards;

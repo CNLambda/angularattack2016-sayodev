@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import {Router, ROUTER_PROVIDERS } from '@angular/router';
+import { Router, ROUTER_PROVIDERS } from '@angular/router';
 import { Http, Response} from '@angular/http';
 
 
@@ -9,7 +9,7 @@ import { Http, Response} from '@angular/http';
   selector: 'home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css'],
-  providers:  [ HTTP_PROVIDERS, ROUTER_PROVIDERS ]
+  providers: [ HTTP_PROVIDERS, ROUTER_PROVIDERS ]
 })
 export class HomeComponent implements OnInit {
 
@@ -36,7 +36,8 @@ export class HomeComponent implements OnInit {
 
     startboard(id) {
         console.log(id);
-        this.router.navigate(['/board', id]);
+        //this.router.navigate(['/board', id]); //here!
+        window.location.href = "../#" + id;
     }
 
 }

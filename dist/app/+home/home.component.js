@@ -29,7 +29,8 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.startboard = function (id) {
         console.log(id);
-        this.router.navigate(['/board', id]);
+        //this.router.navigate(['/board', id]); //here!
+        window.location.href = "../#" + id;
     };
     HomeComponent = __decorate([
         core_1.Component({
