@@ -14,7 +14,7 @@ import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/ro
 })
 @Routes([
     {path: '/home', component: HomeComponent},
-    {path: '/board', component: BoardComponent}
+    {path: '/board/:boardid', component: BoardComponent}
 ])
 export class Angularattack2016SayodevAppComponent implements OnInit {
 
@@ -26,7 +26,7 @@ export class Angularattack2016SayodevAppComponent implements OnInit {
 
     ngOnInit() {
         if(window.location.href.indexOf("#") > -1) {
-            this.router.navigate(['/board']);
+            this.router.navigate(['/board', 3]);
         } else {
             this.router.navigate(['/home']);
         }
