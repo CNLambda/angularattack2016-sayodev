@@ -33,6 +33,8 @@ var barrels = [
     'app/text-card',
     'app/link-card',
     'app/image-card',
+    'app/canvas-card',
+    'app/file-card',
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {

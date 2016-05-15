@@ -39,6 +39,8 @@ const barrels: string[] = [
   'app/text-card',
   'app/link-card',
   'app/image-card',
+  'app/canvas-card',
+  'app/file-card',
   /** @cli-barrel */
 ];
 

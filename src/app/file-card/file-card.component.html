@@ -1,0 +1,4 @@
+<h5 *ngIf="!editing">
+  <a href="{{link}}" target="_blank">Download here (from {{link}})</a>
+</h5>
+<input [hidden]="!editing" [(ngModel)]="link" type="text"  />
