@@ -69,4 +69,8 @@
    .input-field .prefix.active {
      color: #000;
    }
-        
+    
+    
+.card-content {
+    bottom: 16em;
+}
