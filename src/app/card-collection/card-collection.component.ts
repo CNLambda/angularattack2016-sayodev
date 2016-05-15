@@ -28,35 +28,13 @@ export class CardCollectionComponent implements OnInit {
     private data;
     private name = "";
     private getInfo(){
-        this.data = this.http.get(this.url + this.get_id(location.href) + "/getinfo")
+        this.data = this.http.get(this.url + this.get_id(location.href) + "/getInfo")
             .subscribe(
                 data => {
-                    let old: {"title": string, "type": string, "content": any, "color": string}[] = this.cards;
-                    this.cards = data.json().cards;
-                    console.log("HERE: " + JSON.stringify(this.cards));
-                    if (this.cards.length != old.length) {
+                    let new_: {"title": string, "type": string, "content": any, "color": string}[] = data.json().cards;
+                    if (JSON.stringify(new_) != JSON.stringify(this.cards)) {
+                        this.cards = new_;
                         this.reorderCards();
-                        return;
-                    }
-                    for (let i: number = 0; i < this.cards.length; i++) {
-                        let c1: {"title": string, "type": string, "content": any, "color": string} = this.cards[i];
-                        let c2: {"title": string, "type": string, "content": any, "color": string} = old[i];
-                        if (c1.title != c2.title) {
-                            this.reorderCards();
-                            return;
-                        }
-                        if (c1.type != c2.type) {
-                            this.reorderCards();
-                            return;
-                        }
-                        if (c1.content != c2.content) {
-                            this.reorderCards();
-                            return;
-                        }
-                        if (c1.color != c2.color) {
-                            this.reorderCards();
-                            return;
-                        }
                     }
                 },
                 err => console.log(err.json().message),
@@ -132,48 +110,37 @@ export class CardCollectionComponent implements OnInit {
     reorderCards() {
         let collumn_data: number[] = [];
         if(window.matchMedia("(min-width: 8in)").matches) {
-            this.collumns = 3;
+            window.setTimeout(() => {
+            let collumn_data: number[] = [];
+            for (let i: number = 0; i < this.cards.length; i++) {
+                collumn_data.push(0);
+            }
             this.card_table = [];
             for (let i: number = 0; i < this.collumns; i++) {
                 this.card_table.push([]);
             }
             for (let i: number = 0; i < this.cards.length; i++) {
-                let current_card: {"title": string, "type": string, "content": any, "color": string} = this.cards[i];
-                this.card_table[0].push({
+                let minimum: number = Infinity;
+                let id: number = -1;
+                let current_card: {"title": string, "type": string, "content": any, "color": string};
+                for (let j: number = 0; j < 3; j++) {
+                    if (collumn_data[j] < minimum) {
+                        minimum = collumn_data[j];
+                        id = j;
+                    }
+                }
+                current_card = this.cards[i];
+                this.card_table[id].push({
                     "title": current_card.title,
                     "type": current_card.type,
                     "content": current_card.content,
                     "color": current_card.color,
                     "id": i
                 });
-            }
-            window.setTimeout(() => {
-                let collumn_data: number[] = [];
-                for (let i: number = 0; i < this.cards.length; i++) {
-                  collumn_data.push(0);
-                }
-                this.card_table[0] = [];
-                for (let i: number = 0; i < this.cards.length; i++) {
-                    let minimum: number = Infinity;
-                    let id: number = -1;
-                    let current_card: {"title": string, "type": string, "content": any, "color": string};
-                    for (let j: number = 0; j < 3; j++) {
-                        if (collumn_data[j] < minimum) {
-                            minimum = collumn_data[j];
-                            id = j;
-                        }
-                    }
-                    current_card = this.cards[i];
-                    this.card_table[id].push({
-                        "title": current_card.title,
-                        "type": current_card.type,
-                        "content": current_card.content,
-                        "color": current_card.color,
-                        "id": i
-                    });
-                    collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
-                }
-            }, 50);
+                //collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
+                let x: any = document.getElementsByClassName('app_card' + i.toString())[0];
+                collumn_data[id] += 12 + x.offsetHeight;
+            }}, 100);
         } else {
             this.collumns = 1;
         }

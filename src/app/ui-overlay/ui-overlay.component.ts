@@ -20,7 +20,6 @@ export class UiOverlayComponent implements OnInit {
       this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id(location.href) + "/card/create", JSON.stringify({"type": type}))
           .subscribe(
                 data => {
-                    console.log(data.json());
                 },
                 err => console.log(err.json().message),
                 () => console.log('card done...')

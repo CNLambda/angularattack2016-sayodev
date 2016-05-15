@@ -20,7 +20,6 @@ var UiOverlayComponent = (function () {
         console.log("function called...");
         this.http.post("https://angularattack2016-sayodev.herokuapp.com/board/" + this.get_id(location.href) + "/card/create", JSON.stringify({ "type": type }))
             .subscribe(function (data) {
-            console.log(data.json());
         }, function (err) { return console.log(err.json().message); }, function () { return console.log('card done...'); });
     };
     UiOverlayComponent.prototype.get_id = function (x) {

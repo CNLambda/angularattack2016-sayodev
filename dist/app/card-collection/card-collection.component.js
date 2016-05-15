@@ -47,34 +47,12 @@ var CardCollectionComponent = (function () {
     }
     CardCollectionComponent.prototype.getInfo = function () {
         var _this = this;
-        this.data = this.http.get(this.url + this.get_id(location.href) + "/getinfo")
+        this.data = this.http.get(this.url + this.get_id(location.href) + "/getInfo")
             .subscribe(function (data) {
-            var old = _this.cards;
-            _this.cards = data.json().cards;
-            console.log("HERE: " + JSON.stringify(_this.cards));
-            if (_this.cards.length != old.length) {
+            var new_ = data.json().cards;
+            if (JSON.stringify(new_) != JSON.stringify(_this.cards)) {
+                _this.cards = new_;
                 _this.reorderCards();
-                return;
-            }
-            for (var i = 0; i < _this.cards.length; i++) {
-                var c1 = _this.cards[i];
-                var c2 = old[i];
-                if (c1.title != c2.title) {
-                    _this.reorderCards();
-                    return;
-                }
-                if (c1.type != c2.type) {
-                    _this.reorderCards();
-                    return;
-                }
-                if (c1.content != c2.content) {
-                    _this.reorderCards();
-                    return;
-                }
-                if (c1.color != c2.color) {
-                    _this.reorderCards();
-                    return;
-                }
             }
         }, function (err) { return console.log(err.json().message); }, function () { return console.log('Got info...'); });
     };
@@ -126,27 +104,15 @@ var CardCollectionComponent = (function () {
         var _this = this;
         var collumn_data = [];
         if (window.matchMedia("(min-width: 8in)").matches) {
-            this.collumns = 3;
-            this.card_table = [];
-            for (var i = 0; i < this.collumns; i++) {
-                this.card_table.push([]);
-            }
-            for (var i = 0; i < this.cards.length; i++) {
-                var current_card = this.cards[i];
-                this.card_table[0].push({
-                    "title": current_card.title,
-                    "type": current_card.type,
-                    "content": current_card.content,
-                    "color": current_card.color,
-                    "id": i
-                });
-            }
             window.setTimeout(function () {
                 var collumn_data = [];
                 for (var i = 0; i < _this.cards.length; i++) {
                     collumn_data.push(0);
                 }
-                _this.card_table[0] = [];
+                _this.card_table = [];
+                for (var i = 0; i < _this.collumns; i++) {
+                    _this.card_table.push([]);
+                }
                 for (var i = 0; i < _this.cards.length; i++) {
                     var minimum = Infinity;
                     var id = -1;
@@ -165,9 +131,11 @@ var CardCollectionComponent = (function () {
                         "color": current_card.color,
                         "id": i
                     });
-                    collumn_data[id] += 12 + _this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
+                    //collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
+                    var x = document.getElementsByClassName('app_card' + i.toString())[0];
+                    collumn_data[id] += 12 + x.offsetHeight;
                 }
-            }, 50);
+            }, 100);
         }
         else {
             this.collumns = 1;

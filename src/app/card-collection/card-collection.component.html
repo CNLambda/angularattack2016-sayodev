@@ -1,11 +1,16 @@
+<div *ngFor="let card_data of cards; let i = index;" class="row" style="opacity: 0; position: absolute; left: 0px; top: 0px; width: 100%;">
+    <div class="col {{'s' + (12/collumns).toString()}}">
+        <card [data]="card_data" [id]="id" (on_delete)="null" class="{{'app_card' + i.toString()}}"></card>
+    </div>
+</div>
 <div *ngIf="collumns == 1" class="row">
-    <div class="col span 12">
+    <div class="col s12">
         <card *ngFor="let card_data of cards; let i = index;" [data]="card_data" [id]="i" (on_delete)="delete(i)"></card>
     </div>
 </div>
 <div *ngIf="collumns != 1" class="row">
     <div *ngFor="let cards_in_collumn of card_table; let i = index" class="col {{'s' + (12/collumns).toString()}}">
-        <card *ngFor="let card_data of cards_in_collumn; let j = index" [data]="card_data" [id]="card_data.id" (on_delete)="delete(card_data.id)" class="{{'app_card' + card_data.id.toString()}}"></card>
+        <card *ngFor="let card_data of cards_in_collumn; let j = index" [data]="card_data" [id]="card_data.id" (on_delete)="delete(card_data.id)"></card>
     </div>
 </div>
 <div id="userq" class="del">

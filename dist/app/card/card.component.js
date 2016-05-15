@@ -34,6 +34,7 @@ var CardComponent = (function () {
         this.editing = !this.editing;
     };
     CardComponent.prototype.delete = function () {
+        // console.log("Deleted card " + this.id);
         this.on_delete.emit(null);
     };
     __decorate([
