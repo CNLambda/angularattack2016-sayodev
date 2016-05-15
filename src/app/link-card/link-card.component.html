@@ -1,5 +1,5 @@
 <h5 *ngIf="!editing">
-  <a href="{{link}}" target="_blank">{{beautify_link(link)}}</a>
-  <embed src="{{link}}" width="100%" height="150px" style="border: none;" />
+    <img src="{{getFavicon(link)}}" width="auto" height="32px" style="border: none; margin-bottom: -8px; margin-right: 5px;" />
+    <a href="{{link}}" target="_blank">{{beautify_link(link)}}</a>
 </h5>
-<input [hidden]="!editing" [(ngModel)]="link" type="text" (change)="on_change.emit(link)" />
+<input [hidden]="!editing" [(ngModel)]="link" type="text" placeholder="Enter a link..." (change)="on_change.emit(link)" />

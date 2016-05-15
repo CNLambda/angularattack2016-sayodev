@@ -12,10 +12,10 @@ var core_1 = require('@angular/core');
 var text_card_1 = require('../text-card');
 var link_card_1 = require('../link-card');
 var image_card_1 = require('../image-card');
-var file_card_1 = require('../file-card');
 var http_1 = require('@angular/http');
 var http_2 = require('@angular/http');
 //import { CanvasCardComponent } from '../canvas-card';
+//import { FileCardComponent } from '../file-card';
 var CardComponent = (function () {
     function CardComponent(http) {
         this.http = http;
@@ -96,7 +96,7 @@ var CardComponent = (function () {
             selector: 'card',
             templateUrl: 'card.component.html',
             styleUrls: ['card.component.css'],
-            directives: [text_card_1.TextCardComponent, link_card_1.LinkCardComponent, image_card_1.ImageCardComponent, file_card_1.FileCardComponent],
+            directives: [text_card_1.TextCardComponent, link_card_1.LinkCardComponent, image_card_1.ImageCardComponent],
             providers: [http_1.HTTP_PROVIDERS]
         }), 
         __metadata('design:paramtypes', [http_2.Http])

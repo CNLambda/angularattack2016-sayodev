@@ -2,17 +2,17 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { TextCardComponent } from '../text-card';
 import { LinkCardComponent } from '../link-card';
 import { ImageCardComponent } from '../image-card';
-import { FileCardComponent } from '../file-card';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { Http, Response} from '@angular/http';
 //import { CanvasCardComponent } from '../canvas-card';
+//import { FileCardComponent } from '../file-card';
 
 @Component({
     moduleId: module.id,
     selector: 'card',
     templateUrl: 'card.component.html',
     styleUrls: ['card.component.css'],
-    directives: [TextCardComponent, LinkCardComponent, ImageCardComponent, FileCardComponent],
+    directives: [TextCardComponent, LinkCardComponent, ImageCardComponent],
     providers:  [ HTTP_PROVIDERS ]
 })
 export class CardComponent implements OnInit {

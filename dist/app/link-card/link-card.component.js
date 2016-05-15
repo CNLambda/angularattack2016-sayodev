@@ -9,8 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+var http_2 = require('@angular/http');
 var LinkCardComponent = (function () {
-    function LinkCardComponent() {
+    function LinkCardComponent(http) {
+        this.http = http;
         this.on_change = new core_1.EventEmitter();
     }
     LinkCardComponent.prototype.ngOnInit = function () {
@@ -20,6 +23,14 @@ var LinkCardComponent = (function () {
     };
     LinkCardComponent.prototype.beautify_link = function (link) {
         return this.link.split("/")[2];
+    };
+    LinkCardComponent.prototype.getFavicon = function (link) {
+        var beautified = "http://" + this.beautify_link(link) + "/favicon.ico";
+        /*if(this.isValid(beautified)) {*/
+        return beautified;
+        /*} else {
+          return "../empty_image.png";
+        }*/
     };
     __decorate([
         core_1.Input(), 
@@ -38,9 +49,10 @@ var LinkCardComponent = (function () {
             moduleId: module.id,
             selector: 'link-card',
             templateUrl: 'link-card.component.html',
-            styleUrls: ['link-card.component.css']
+            styleUrls: ['link-card.component.css'],
+            providers: [http_1.HTTP_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_2.Http])
     ], LinkCardComponent);
     return LinkCardComponent;
 }());
