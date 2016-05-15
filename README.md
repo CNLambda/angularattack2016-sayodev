@@ -3,6 +3,9 @@
 This is a project by SayoDev, a team of 13 till 16 years old students from Germany.
 
 We built the frontend with Angular 2 (/src), hosted by Surge, and the backend (/server) with Node.js and PostgreSQL, hosted by Heroku for free. (access to backend on request)
+## Access
+
+Please access only per https:// because of that websocket works. Thx
 
 ## Description
 
