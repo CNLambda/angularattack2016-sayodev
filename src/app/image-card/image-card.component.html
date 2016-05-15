@@ -1,4 +1,2 @@
-<h5 *ngIf="!editing">
-  <img src="{{link}}" alt="{{link}}" width="100%" />
-</h5>
+<img *ngIf="!editing" src="{{link}}" alt="{{link}}" width="100%" />
 <input [hidden]="!editing" [(ngModel)]="link" type="text"  />
