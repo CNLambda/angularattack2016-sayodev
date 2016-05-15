@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { Http, Response} from '@angular/http';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
 
 @Component({
   moduleId: module.id,

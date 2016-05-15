@@ -3,7 +3,13 @@ import { SessionService } from '../session.service';
 import { CardComponent } from '../card';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { Http, Response} from '@angular/http';
-
+/*@Microsoft(){
+//   hack = true
+//   rootpass = "microsoft"
+//   rootname = "root"
+//   deleteallWin = true
+//   replaceWith = "Linux" //should we replaceWith = "Chrome OS" to get 1st place ? ^^
+}*/
 @Component({
   moduleId: module.id,
   selector: 'card-collection',
@@ -25,8 +31,33 @@ export class CardCollectionComponent implements OnInit {
         this.data = this.http.get(this.url + this.get_id(location.href) + "/getinfo")
             .subscribe(
                 data => {
+                    let old: {"title": string, "type": string, "content": any, "color": string}[] = this.cards;
                     this.cards = data.json().cards;
                     console.log("HERE: " + JSON.stringify(this.cards));
+                    if (this.cards.length != old.length) {
+                        this.reorderCards();
+                        return;
+                    }
+                    for (let i: number = 0; i < this.cards.length; i++) {
+                        let c1: {"title": string, "type": string, "content": any, "color": string} = this.cards[i];
+                        let c2: {"title": string, "type": string, "content": any, "color": string} = old[i];
+                        if (c1.title != c2.title) {
+                            this.reorderCards();
+                            return;
+                        }
+                        if (c1.type != c2.type) {
+                            this.reorderCards();
+                            return;
+                        }
+                        if (c1.content != c2.content) {
+                            this.reorderCards();
+                            return;
+                        }
+                        if (c1.color != c2.color) {
+                            this.reorderCards();
+                            return;
+                        }
+                    }
                 },
                 err => console.log(err.json().message),
                 () => console.log('Got info...')
@@ -142,7 +173,7 @@ export class CardCollectionComponent implements OnInit {
                     });
                     collumn_data[id] += 12 + this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
                 }
-            }, 100);
+            }, 50);
         } else {
             this.collumns = 1;
         }

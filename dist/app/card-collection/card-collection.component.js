@@ -13,6 +13,13 @@ var session_service_1 = require('../session.service');
 var card_1 = require('../card');
 var http_1 = require('@angular/http');
 var http_2 = require('@angular/http');
+/*@Microsoft(){
+//   hack = true
+//   rootpass = "microsoft"
+//   rootname = "root"
+//   deleteallWin = true
+//   replaceWith = "Linux" //should we replaceWith = "Chrome OS" to get 1st place ? ^^
+}*/
 var CardCollectionComponent = (function () {
     function CardCollectionComponent(myElement, http, session) {
         var _this = this;
@@ -42,8 +49,33 @@ var CardCollectionComponent = (function () {
         var _this = this;
         this.data = this.http.get(this.url + this.get_id(location.href) + "/getinfo")
             .subscribe(function (data) {
+            var old = _this.cards;
             _this.cards = data.json().cards;
             console.log("HERE: " + JSON.stringify(_this.cards));
+            if (_this.cards.length != old.length) {
+                _this.reorderCards();
+                return;
+            }
+            for (var i = 0; i < _this.cards.length; i++) {
+                var c1 = _this.cards[i];
+                var c2 = old[i];
+                if (c1.title != c2.title) {
+                    _this.reorderCards();
+                    return;
+                }
+                if (c1.type != c2.type) {
+                    _this.reorderCards();
+                    return;
+                }
+                if (c1.content != c2.content) {
+                    _this.reorderCards();
+                    return;
+                }
+                if (c1.color != c2.color) {
+                    _this.reorderCards();
+                    return;
+                }
+            }
         }, function (err) { return console.log(err.json().message); }, function () { return console.log('Got info...'); });
     };
     CardCollectionComponent.prototype.get_id = function (x) {
@@ -135,7 +167,7 @@ var CardCollectionComponent = (function () {
                     });
                     collumn_data[id] += 12 + _this.element.nativeElement.querySelector('.app_card' + i.toString()).offsetHeight;
                 }
-            }, 100);
+            }, 50);
         }
         else {
             this.collumns = 1;

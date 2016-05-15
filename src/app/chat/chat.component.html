@@ -1,19 +1,27 @@
 <div class="card-panel cyan chat">
     <div class="close" (click)="close_chat.emit(null)">
-        <a alt="close">
+        <a class="waves-effect waves-light btn white-text" alt="close">
             <i class="material-icons white-text big">
-                close
+                  keyboard_arrow_right
             </i>
         </a>
     </div>
     <div class="messages card-content">
-        <div class="card-panel grey darken-3 msg white-text mine">
+        <div class="card-panel msg white-text mine">
             <span class="sender">@jos</span>
             <span class="text">Hi!</span>
         </div>
-        <div class="card-panel grey darken-3 msg white-text">
+        <div class="card-panel msg white-text">
             <span class="sender">@elias</span>
             <span class="text">Hi!</span>
+        </div>
+         <div class="card-panel msg white-text">
+            <span class="sender">@dorian</span>
+            <span class="text">Moin!</span>
+        </div>
+         <div class="card-panel msg white-text">
+            <span class="sender">@dorian</span>
+            <span class="text">Ähh Hi! (Ich bin dumm)</span>
         </div>
     </div>
     <div class="card-action mssend">
