@@ -17,6 +17,7 @@ powered by Heroku, Node.js and PostgreSQL.
 
 ## WebSocket API
 / - echo test
+
 /message - send your chat message
 
 
