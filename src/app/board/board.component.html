@@ -1,4 +1,5 @@
-<card-collection></card-collection>
-<ui-overlay></ui-overlay>
-<chat [opened]="false"></chat>
-<users [opened]="false"></users>
+<div style="{{'position: absolute; left: 0px; top: 0px; height: 100%; width: ' + (chat_opened? ('70%') : '100%') + '%;'}}">
+    <card-collection></card-collection>
+    <ui-overlay (toggle_chat)="toggleChat()"></ui-overlay>
+</div>
+<chat *ngIf="chat_opened" style="width: 30%;"></chat>

@@ -20,7 +20,7 @@ export class CardCollectionComponent implements OnInit {
     public element: ElementRef;
     private url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
     private data;
-    private name = "undefined";
+    private name = "";
     private getInfo(){
         this.data = this.http.get(this.url + this.get_id(location.href) + "/getinfo")
             .subscribe(
@@ -59,7 +59,7 @@ export class CardCollectionComponent implements OnInit {
         }
     }
     setName(){
-        if(this.name == "undefined" ||  this.name == ""){
+        if(this.name == ""){
          return;   
         }
         this.session.setBoardUsername(this.get_id(location.href), this.name); 
@@ -71,7 +71,11 @@ export class CardCollectionComponent implements OnInit {
         let rtime: number;
         let timeout: boolean = false;
         let delta: number = 300;
-
+        let x: any = this.element.nativeElement.querySelector('.del');
+        if(this.session.getBoardUsername(location.href)){
+            console.log("Username schon gesetzt. Lol");
+            x.parentNode.removeChild(x);
+        }
         window.addEventListener("resize", function() {
             rtime = (new Date()).valueOf();
             if (timeout === false) {

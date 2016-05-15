@@ -11,9 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var UiOverlayComponent = (function () {
     function UiOverlayComponent() {
+        this.toggle_chat = new core_1.EventEmitter();
     }
     UiOverlayComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], UiOverlayComponent.prototype, "toggle_chat", void 0);
     UiOverlayComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

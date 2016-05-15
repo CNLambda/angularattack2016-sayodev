@@ -12,11 +12,13 @@ var core_1 = require('@angular/core');
 var card_collection_1 = require('../card-collection');
 var ui_overlay_1 = require('../ui-overlay');
 var chat_1 = require('../chat');
-var users_1 = require('../users');
 var BoardComponent = (function () {
     function BoardComponent() {
     }
     BoardComponent.prototype.ngOnInit = function () {
+    };
+    BoardComponent.prototype.toggleChat = function () {
+        this.chat_opened = !this.chat_opened;
     };
     BoardComponent = __decorate([
         core_1.Component({
@@ -24,7 +26,7 @@ var BoardComponent = (function () {
             selector: 'board',
             templateUrl: 'board.component.html',
             styleUrls: ['board.component.css'],
-            directives: [card_collection_1.CardCollectionComponent, ui_overlay_1.UiOverlayComponent, chat_1.ChatComponent, users_1.UsersComponent]
+            directives: [card_collection_1.CardCollectionComponent, ui_overlay_1.UiOverlayComponent, chat_1.ChatComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], BoardComponent);

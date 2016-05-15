@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UiOverlayComponent implements OnInit {
 
-  constructor() {}
-
-  ngOnInit() {
-  }
+    @Output() toggle_chat: EventEmitter<void> = new EventEmitter<void>();
+  
+    constructor() {}
+  
+    ngOnInit() {
+    }
 
 }

@@ -14,10 +14,6 @@ var ChatComponent = (function () {
     }
     ChatComponent.prototype.ngOnInit = function () {
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], ChatComponent.prototype, "opened", void 0);
     ChatComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

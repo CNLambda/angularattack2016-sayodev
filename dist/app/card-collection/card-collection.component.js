@@ -19,7 +19,7 @@ var CardCollectionComponent = (function () {
         this.http = http;
         this.session = session;
         this.url = 'https://angularattack2016-sayodev.herokuapp.com/board/';
-        this.name = "undefined";
+        this.name = "";
         this.cards = [];
         this.getInfo();
         /* this.cards = [
@@ -52,7 +52,7 @@ var CardCollectionComponent = (function () {
         }
     };
     CardCollectionComponent.prototype.setName = function () {
-        if (this.name == "undefined" || this.name == "") {
+        if (this.name == "") {
             return;
         }
         this.session.setBoardUsername(this.get_id(location.href), this.name);
@@ -64,6 +64,11 @@ var CardCollectionComponent = (function () {
         var rtime;
         var timeout = false;
         var delta = 300;
+        var x = this.element.nativeElement.querySelector('.del');
+        if (this.session.getBoardUsername(location.href)) {
+            console.log("Username schon gesetzt. Lol");
+            x.parentNode.removeChild(x);
+        }
         window.addEventListener("resize", function () {
             rtime = (new Date()).valueOf();
             if (timeout === false) {
