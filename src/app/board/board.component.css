@@ -1,0 +1,22 @@
+.d1 {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    z-index: 0;
+}
+
+.d2 {
+    transition: all 1.5s;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+@media (min-width: 8in) {
+    .d2 {
+        width: 30%;
+    }
+}

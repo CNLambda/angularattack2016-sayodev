@@ -22,5 +22,9 @@ export class BoardComponent implements OnInit {
   toggleChat() {
       this.chat_opened = ! this.chat_opened;
   }
+  
+  hideChat() {
+      this.chat_opened = false;
+  }
 
 }

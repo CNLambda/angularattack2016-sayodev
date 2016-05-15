@@ -34,7 +34,9 @@ export class CardCollectionComponent implements OnInit {
     constructor(private myElement: ElementRef, private http: Http, private session: SessionService) {
         this.cards = [];
         
-        this.getInfo();
+        setInterval(() => {
+            this.getInfo();
+        }, 1000);
 
         /* this.cards = [
             {"title": "Text!","type": "text","content": "Card Nr. 1","color":"white"},
@@ -72,8 +74,7 @@ export class CardCollectionComponent implements OnInit {
         let timeout: boolean = false;
         let delta: number = 300;
         let x: any = this.element.nativeElement.querySelector('.del');
-        if(this.session.getBoardUsername(location.href)){
-            console.log("Username schon gesetzt. Lol");
+        if(this.session.getBoardUsername(this.get_id(location.href))){
             x.parentNode.removeChild(x);
         }
         window.addEventListener("resize", function() {
