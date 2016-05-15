@@ -1,12 +1,12 @@
 <div class="card {{color}} lighten-2">
-    <div class="card-content">
-        <span *ngIf="title != ''" class="card-title" style="z-index:1;">{{title}}</span>
+    <div class="{{type == 'image'? 'card-image' : 'card-content'}}">
+        <span *ngIf="(title != '') || editing" class="card-title" style="z-index:1;" [(innerHTML)]="title" data-contenteditable="{{editing? 'true' : 'false'}}"></span>
         <text-card *ngIf="type == 'text'" [text]="content" [editing]="editing"></text-card>
         <link-card *ngIf="type == 'link'" [link]="content" [editing]="editing"></link-card>
         <image-card *ngIf="type == 'image'" [link]="content" [editing]="editing"></image-card>
         <!--
-            <canvas-card *ngIf="type == 'canvas'" [data]="content" [editing]="{{editing}}"></canvas-card>
-            <file-card *ngIf="type == 'file'" [link]="content" [editing]="{{editing}}"></file-card>
+            <canvas-card *ngIf="type == 'canvas'" [data]="content" [editing]="editing"></canvas-card>
+            <file-card *ngIf="type == 'file'" [link]="content" [editing]="editing"></file-card>
         -->
     </div>
     <div class="card-action">

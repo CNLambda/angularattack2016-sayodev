@@ -10,21 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
 var http_2 = require('@angular/http');
-var FormModel = (function () {
-    function FormModel() {
-        this.nickname = '';
-    }
-    return FormModel;
-}());
-exports.FormModel = FormModel;
 var HomeComponent = (function () {
-    function HomeComponent(http) {
+    function HomeComponent(http, router) {
         this.http = http;
+        this.router = router;
         this.url = 'https://angularattack2016-sayodev.herokuapp.com/board/create';
     }
     HomeComponent.prototype.ngOnInit = function () {
-        this.model = new FormModel();
     };
     HomeComponent.prototype.new_board = function () {
         var _this = this;
@@ -35,7 +29,7 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.startboard = function (id) {
         console.log(id);
-        location.href = "../#" + id;
+        this.router.navigate(['/board', id]);
     };
     HomeComponent = __decorate([
         core_1.Component({
@@ -43,9 +37,9 @@ var HomeComponent = (function () {
             selector: 'home',
             templateUrl: 'home.component.html',
             styleUrls: ['home.component.css'],
-            providers: [http_1.HTTP_PROVIDERS]
+            providers: [http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [http_2.Http])
+        __metadata('design:paramtypes', [http_2.Http, router_1.Router])
     ], HomeComponent);
     return HomeComponent;
 }());

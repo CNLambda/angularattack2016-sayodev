@@ -14,22 +14,24 @@ import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/ro
 })
 @Routes([
     {path: '/home', component: HomeComponent},
-    {path: '/board/:boardid', component: BoardComponent}
+    {path: '/board/:boardid', component: BoardComponent},
+    {path: '*', component: HomeComponent}
 ])
 export class Angularattack2016SayodevAppComponent implements OnInit {
 
     title = "BrainShare";
-
     constructor(private router: Router, private session: SessionService) {
       this.session.setBoardUsername("abc", "jonas");
     }
 
     ngOnInit() {
-        if(window.location.href.indexOf("#") > -1) {
-            this.router.navigate(['/board', 3]);
+        /*if(window.location.href.indexOf("#") > -1) {
+            this.router.navigate(['/board/' + window.location.href.split("#")[1]]);
+        } else if (window.location.href.indexOf('board') > -1 ) {
         } else {
             this.router.navigate(['/home']);
-        }
+        }*/
+        // this.router.navigate(['/home']);
     }
 
 }

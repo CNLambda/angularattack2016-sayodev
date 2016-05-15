@@ -2,13 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import {Router, ROUTER_PROVIDERS } from '@angular/router';
 import { Http, Response} from '@angular/http';
-export class FormModel {
-    public nickname: string
-
-    constructor() {
-        this.nickname = '';
-    }
-}
 
 
 @Component({
@@ -20,8 +13,6 @@ export class FormModel {
 })
 export class HomeComponent implements OnInit {
 
-    model: FormModel;
-
     constructor (private http: Http, private router: Router) {}
 
 
@@ -29,7 +20,6 @@ export class HomeComponent implements OnInit {
     private data1;
 
     ngOnInit() {
-        this.model = new FormModel();
     }
 
     new_board() {

@@ -21,12 +21,13 @@ var Angularattack2016SayodevAppComponent = (function () {
         this.session.setBoardUsername("abc", "jonas");
     }
     Angularattack2016SayodevAppComponent.prototype.ngOnInit = function () {
-        if (window.location.href.indexOf("#") > -1) {
-            this.router.navigate(['/board']);
-        }
-        else {
+        /*if(window.location.href.indexOf("#") > -1) {
+            this.router.navigate(['/board/' + window.location.href.split("#")[1]]);
+        } else if (window.location.href.indexOf('board') > -1 ) {
+        } else {
             this.router.navigate(['/home']);
-        }
+        }*/
+        // this.router.navigate(['/home']);
     };
     Angularattack2016SayodevAppComponent = __decorate([
         core_1.Component({
@@ -39,7 +40,8 @@ var Angularattack2016SayodevAppComponent = (function () {
         }),
         router_1.Routes([
             { path: '/home', component: _home_1.HomeComponent },
-            { path: '/board', component: board_1.BoardComponent }
+            { path: '/board/:boardid', component: board_1.BoardComponent },
+            { path: '*', component: _home_1.HomeComponent }
         ]), 
         __metadata('design:paramtypes', [router_1.Router, session_service_1.SessionService])
     ], Angularattack2016SayodevAppComponent);
