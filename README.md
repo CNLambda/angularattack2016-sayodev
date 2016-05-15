@@ -1,4 +1,4 @@
-# Welcome to Brainshare
+# Welcome to Brainshare!
 
 This is a project by SayoDev, a team of 13 till 16 years old students from Germany.
 
